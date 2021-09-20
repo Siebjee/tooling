@@ -12,7 +12,10 @@ for file in $(find ${TOOLING_ZSH_DIR}/aliasses -type f); do
 done
 
 # Tooling functions. Most of these go in hand with $TOOLING_BIN_DIR
-source ${TOOLING_ZSH_DIR}/functions/kubernetes.sh
+# Load additional functions
+for file in $(find ${TOOLING_ZSH_DIR}/functions -type f); do
+  echo source ${file}
+done
 
 # initialize directory based hooks:
 source "${TOOLING_ZSH_DIR}/hooks/_hook.zsh"
