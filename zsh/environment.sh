@@ -20,4 +20,7 @@ done
 # initialize directory based hooks:
 source "${TOOLING_ZSH_DIR}/hooks/_hook.zsh"
 
-export PATH="${PATH}:${TOOLING_BIN_DIR}"
+# only add $TOOLING_BIN_DIR to path if it's not there.
+if [[ ${PATH} != *"${TOOLING_BIN_DIR}"* ]]; then
+  export PATH="${PATH}:${TOOLING_BIN_DIR}"
+fi
