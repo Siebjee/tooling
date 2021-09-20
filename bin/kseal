@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+KSEAL_BIN="/usr/local/bin/kubeseal"
+
+cwd=$(pwd)
+until test -f .kube_config || [ "$(pwd)" = "/" ]; do
+  cd ..
+done
+if test -f .kube_config; then
+  source .kube_config
+fi
+cd ${cwd}
+
+if [ ! -z ${KCTX} ]; then
+  context=${KCTX}
+fi
+
+if [ ! -z ${context} ]; then kctl_args="--context=${context}"; fi
+if [ ! -z ${SEALED_SECRETS_CONTROLLER_NAMESPACE} ]; then kctl_args="${kctl_args} --namespace=${SEALED_SECRETS_CONTROLLER_NAMESPACE}"; fi
+
+source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
+
+>&2 echo "[KUBESEAL] Using context: ${context}/${SEALED_SECRETS_CONTROLLER_NAMESPACE}"
+${KSEAL_BIN} ${kctl_args} $@

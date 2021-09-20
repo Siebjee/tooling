@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+HELM_BIN="/usr/local/bin/helm"
+
+cwd=$(pwd)
+until test -f .kube_config || [ "$(pwd)" = "/" ]; do
+  cd ..
+done
+if test -f .kube_config; then
+  source .kube_config
+fi
+cd ${cwd}
+
+if [ ! -z ${KCTX} ]; then
+  context=${KCTX}
+fi
+
+if [ ! -z ${KNS} ]; then
+  namespace=${KNS}
+fi
+
+if [ ! -z ${context} ]; then kctl_args="--kube-context=${context}"; fi
+if [ ! -z ${namespace} ]; then kctl_args="${kctl_args} --namespace=${namespace}"; fi
+
+source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
+
+>&2 echo "[HELM] Using context: ${context}/${namespace}"
+${HELM_BIN} ${kctl_args} $@

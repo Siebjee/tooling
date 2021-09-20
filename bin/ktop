@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+while getopts ':ws:n:' arg; do
+  case ${arg} in
+    s) SLEEP=${OPTARG};;
+    n) NAMESPACE=${OPTARG};;
+    w) WATCH="true";;
+    *)
+      echo "Help:"
+      echo "Optional args:"
+      echo "    -s N          | sleep in seconds"
+      echo "    -n namespace  | your namespace"
+      echo "    -w            | watch like output"
+      exit 1
+    ;;
+  esac
+done
+
+i=4
+printf "%-20s %-80s %17s %20s\n" "namespace" "pod_name/container" "CPU" "MEM"
+while true; do
+  if [ ! -z ${WATCH} ] && [ $i -eq 4 ]; then
+    tput clear
+  fi
+  if [ ! -z ${WATCH} ] || [ ${i} -gt $(tput lines) ]; then
+    printf "%-20s %-80s %17s %20s\n" "namespace" "pod_name/container" "CPU" "MEM"
+    i=1
+  fi
+
+  pods=$(kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods" 2> /dev/null)
+  nodes=$(kubectl get --raw "/apis/metrics.k8s.io/v1beta1/nodes" 2> /dev/null)
+
+  if [ -z ${NAMESPACE} ]; then
+    pod_data=$(jq -Src '.items |= sort_by(.metadata.namespace, .metadata.name) | .items[]' <<< ${pods})
+  else
+    pod_data=$(jq --arg n "${NAMESPACE}" -rc '.items |= sort_by(.metadata.namespace, .metadata.name) | .items[] | select(.metadata.namespace | test($n))' <<< ${pods})
+  fi
+
+  for pod_data in ${pod_data}; do
+    pod_name=$(jq -Src '.metadata.name' <<< ${pod_data})
+    pod_namespace=$(jq -Src '.metadata.namespace' <<< ${pod_data})
+    pod_node=$(kubectl --namespace ${pod_namespace} get pod ${pod_name} -o jsonpath='{.spec.nodeName}' 2> /dev/null)
+
+    node_metrics=$(jq --arg n "${pod_node}" -Src '.items[] | select(.metadata.name | test($n))' <<< ${nodes})
+    node_data=$(kubectl --namespace ${pod_namespace} get node "${pod_node}" -o jsonpath='{.status.allocatable}' 2> /dev/null)
+
+    node_usage_cpu=$(jq -rc '.usage.cpu' <<< ${node_metrics} | egrep -o [0-9]+)
+    node_usage_mem=$(jq -rc '.usage.memory' <<< ${node_metrics} | egrep -o [0-9]+)
+
+    node_allocatable_cpu=$(jq -rc '.cpu |= (sub("m";""))' <<< ${node_data} | jq -rc '.cpu')
+    node_allocatable_memory=$(jq -rc '.memory |= (sub("Ki";""))' <<< ${node_data} | jq -rc '.memory') # always in Ki notation
+
+    for container in $(jq -rc '.containers |= sort_by(.name) | .containers[]' <<< ${pod_data}); do
+      name=$(jq -rc '.name' <<< ${container})
+      usage_cpu=$(expr $(jq -rc '.usage.cpu' <<< ${container} | egrep -o [0-9]+) / 1000000)
+      usage_mem_raw=$(jq -rc '.usage.memory' <<< ${container}) ## Can be either Ki or Mi notation
+
+      if grep "Ki" <<< ${usage_mem_raw} >/dev/null; then
+        usage_mem=$(awk -v m=$(egrep -o "[0-9]+" <<< ${usage_mem_raw}) 'BEGIN{print (m/1000)}')
+      else
+        usage_mem=$(egrep -o "[0-9]+" <<< ${usage_mem_raw})
+      fi
+
+      printf "%-20s %-80s %6s m (%5.2f%%) %8.2f Mi (%5.2f%%)\n" \
+        ${pod_namespace} \
+        "$pod_name/$name" \
+        ${usage_cpu} \
+        $(awk -v a=${usage_cpu} -v b=${node_allocatable_cpu} 'BEGIN{print (a/b*100)}') \
+        ${usage_mem} \
+        $(awk -v a=${usage_mem} -v b=${node_allocatable_memory} 'BEGIN{print (a/b*100)}')
+      let i=$i+1
+    done
+  done
+
+  if [ ! -z ${SLEEP} ] && [ ${SLEEP} -gt 0 ]; then
+    sleep ${SLEEP}
+    if [ ! -z ${WATCH} ]; then
+      tput ed
+      tput cup 0 0
+    fi
+  else
+    break
+  fi
+done

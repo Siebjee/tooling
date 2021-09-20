@@ -1,0 +1,4 @@
+*.swp
+*.swo
+.DS_STORE
+bin/.additional_wrapper_conditions
