@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-TOOLING_BASE_DIR="${HOME}/projects/personal/tooling"
-TOOLING_BIN_DIR="${HOME}/projects/personal/tooling/bin"
-TOOLING_ZSH_DIR="${HOME}/projects/personal/tooling/zsh"
+export TOOLING_BASE_DIR="${HOME}/projects/personal/tooling"
+export TOOLING_BIN_DIR="${HOME}/projects/personal/tooling/bin"
+export TOOLING_ZSH_DIR="${HOME}/projects/personal/tooling/zsh"
 
 alias _env_reload="source ${TOOLING_BASE_DIR}/zsh/environment.sh"
 
