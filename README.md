@@ -33,5 +33,8 @@ export TOOLING_BASE_DIR="$(pwd)"
 EOF
 
 source ${HOME}/.siebjee_tooling
-echo "source ${TOOLING_BASE_DIR}/zsh/environment.sh" >> $HOME/.zshrc
+cat <<EOF >> ${HOME}/.zshrc
+source ${HOME}/.siebjee_tooling
+source ${TOOLING_BASE_DIR}/zsh/environment.sh
+EOF
 ```
