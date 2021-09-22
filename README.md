@@ -24,9 +24,14 @@ Install [zsh](https://github.com/ohmyzsh/ohmyzsh) and optionally configured as l
 ### Installation
 To install this framework
 ```
-PROJECT_DIR="$HOME/projects/personal"
-mkdir -p $PROJECT_DIR
-git clone git@github.com:Siebjee/tooling.git $PROJECT_DIR/tooling
+git clone git@github.com:Siebjee/tooling.git
 
-echo "source $PROJECT_DIR/tooling/zsh/environment.sh" >> $HOME/.zshrc
+cd tooling
+
+cat <<EOF > ${HOME}/.siebjee_tooling
+export TOOLING_BASE_DIR="$(pwd)"
+EOF
+
+source ${HOME}/.siebjee_tooling
+echo "source ${TOOLING_BASE_DIR}/zsh/environment.sh" >> $HOME/.zshrc
 ```

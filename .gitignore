@@ -2,3 +2,6 @@
 *.swo
 .DS_STORE
 bin/.additional_wrapper_conditions
+
+zsh/environment/*.sh
+zsh/environment/*.zsh
