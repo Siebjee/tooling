@@ -33,7 +33,7 @@ source "${TOOLING_ZSH_DIR}/hooks/_hooks.zsh"
 
 # only add $TOOLING_BIN_DIR to path if it's not there.
 if [[ ${PATH} != *"${TOOLING_BIN_DIR}"* ]]; then
-  export PATH="${PATH}:${TOOLING_BIN_DIR}"
+  export PATH="${TOOLING_BIN_DIR}:${PATH}"
 fi
 
 # Enable docker & kubectl autocomplete
