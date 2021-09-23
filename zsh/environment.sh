@@ -29,7 +29,7 @@ for file in $(find ${TOOLING_ZSH_DIR}/environment -type f -iname "*.zsh" -iname 
 done
 
 # initialize directory based hooks:
-source "${TOOLING_ZSH_DIR}/hooks/_hook.zsh"
+source "${TOOLING_ZSH_DIR}/hooks/_hooks.zsh"
 
 # only add $TOOLING_BIN_DIR to path if it's not there.
 if [[ ${PATH} != *"${TOOLING_BIN_DIR}"* ]]; then
@@ -38,11 +38,11 @@ fi
 
 # Enable docker & kubectl autocomplete
 for plugin in ${plugins}; do
-  if [ "${plugin}" == "docker" ];
+  if [ "${plugin}" = "docker" ]; then
     ## Docker autocomplete
     fpath+=($ZSH/plugins/docker)
   fi
-  if [ "${plugin}" == "kubectl" ];
+  if [ "${plugin}" = "kubectl" ]; then
     ## Docker autocomplete
     fpath+=($ZSH/plugins/kubectl)
   fi
@@ -51,12 +51,12 @@ autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
 # add flux autocomplete
-if command flux 2>/dev/null; then
+if command flux --version 2>&1 > /dev/null; then
   . <(flux completion zsh 2>/dev/null)
 fi
 
 # add flux autocomplete
-if command pyenv --version 2>/dev/null; then
+if command pyenv --version 2>&1 > /dev/null; then
   eval "$(pyenv init -)"
 fi
 
