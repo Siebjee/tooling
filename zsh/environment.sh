@@ -19,7 +19,7 @@ done
 
 # Tooling functions. Most of these go in hand with $TOOLING_BIN_DIR
 # Load additional functions
-for file in $(find ${TOOLING_ZSH_DIR}/functions -type f); do
+for file in $(find ${TOOLING_ZSH_DIR}/functions -maxdepth 1 -type f); do
   source ${file}
 done
 
