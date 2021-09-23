@@ -51,12 +51,12 @@ autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
 # add flux autocomplete
-if command flux --version 2>&1 > /dev/null; then
+if command flux --version > /dev/null 2>&1; then
   . <(flux completion zsh 2>/dev/null)
 fi
 
 # add flux autocomplete
-if command pyenv --version 2>&1 > /dev/null; then
+if command pyenv --version > /dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
