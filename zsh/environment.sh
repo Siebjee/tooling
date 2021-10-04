@@ -24,7 +24,7 @@ for file in $(find ${TOOLING_ZSH_DIR}/functions -maxdepth 1 -type f); do
 done
 
 # Load additional environment variable files
-for file in $(find ${TOOLING_ZSH_DIR}/environment -type f -iname "*.zsh" -iname "*.sh"); do
+for file in $(find ${TOOLING_ZSH_DIR}/environment -type f \( -iname "*.zsh" -o -iname "*.sh" \)); do
   source ${file}
 done
 
@@ -43,7 +43,7 @@ for plugin in ${plugins}; do
     fpath+=($ZSH/plugins/docker)
   fi
   if [ "${plugin}" = "kubectl" ]; then
-    ## Docker autocomplete
+    ## kubectl autocomplete
     fpath+=($ZSH/plugins/kubectl)
   fi
 done
