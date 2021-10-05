@@ -20,5 +20,5 @@ if [ ! -z ${SEALED_SECRETS_CONTROLLER_NAMESPACE} ]; then kctl_args="${kctl_args}
 
 source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
 
->&2 echo "[KUBESEAL] Using context: ${context}/${SEALED_SECRETS_CONTROLLER_NAMESPACE}"
+>&2 echo "[KSEAL @ $(date "+%Y-%m-%d %H:%M:%S")] Using context: ${context}/${SEALED_SECRETS_CONTROLLER_NAMESPACE}"
 ${KSEAL_BIN} ${kctl_args} $@

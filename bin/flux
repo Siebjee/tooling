@@ -24,5 +24,5 @@ if [ ! -z ${namespace} ]; then kctl_args="${kctl_args} --namespace=${namespace}"
 
 source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
 
->&2 echo "[FLUX] Using context: ${context}/${namespace}"
+>&2 echo "[FLUX @ $(date "+%Y-%m-%d %H:%M:%S")] Using context: ${context}/${namespace}"
 ${flux_BIN} ${kctl_args} $@
