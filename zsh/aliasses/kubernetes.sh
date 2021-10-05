@@ -48,5 +48,15 @@ alias kgkw="kubectl get kustomizations -w"
 alias kgkf="kubectl get kustomizations --namespace flux-system"
 alias kgkfw="kubectl get kustomizations --namespace flux-system -w"
 
+# Flux
+alias kgit="kubectl get gitrepository"
+alias kgip="kubectl get imagepolicies"
+alias kgir="kubectl get imagerepository"
+
+alias kdgit="kubectl describe gitrepository"
+alias kdip="kubectl describe imagepolicies"
+alias kdir="kubectl describe imagerepository"
+
+
 # Simple debug pod
 alias kruntest="kubectl run test --image=debian:bullseye-slim -ti -- /bin/bash"
