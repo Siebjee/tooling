@@ -84,4 +84,13 @@ case ${context} in
 esac
 ```
 
-This way i can use multiple GCP configurations without activly need to switch them.
+This way i can use multiple GCP configurations without actively need to switch them.
+
+**NOTE**
+
+The CLI wrappers still stupport the `--namespace` as far as the original command allows this.
+
+```
+kubectl apply -f deployment.yaml --namespace foobar
+flux reconcile kustomization foobar --namespace baz
+```
