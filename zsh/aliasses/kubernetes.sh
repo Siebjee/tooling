@@ -17,10 +17,6 @@ alias kl5m="kubectl logs --since 5m --timestamps"
 alias kl30m="kubectl logs --since 30m --timestamps"
 alias kl1h="kubectl logs --since 1h --timestamps"
 
-# Helm
-alias kghr="kubectl get hr"
-alias kdhr="kubectl describe hr"
-
 # Pods
 alias kgpra="kubectl get pods --all-namespaces | awk '\$5>0'"
 alias kgpr="kubectl get pods | awk '\$5>0'"
@@ -49,14 +45,16 @@ alias kgkf="kubectl get kustomizations --namespace flux-system"
 alias kgkfw="kubectl get kustomizations --namespace flux-system -w"
 
 # Flux
-alias kgit="kubectl get gitrepository"
-alias kgip="kubectl get imagepolicies"
-alias kgir="kubectl get imagerepository"
+alias kgit="kubectl get gitrepository --namespace=flux-system"
+alias kgimgp="kubectl get imagepolicies --namespace=flux-system"
+alias kgimgr="kubectl get imagerepository --namespace=flux-system"
 
-alias kdgit="kubectl describe gitrepository"
-alias kdip="kubectl describe imagepolicies"
-alias kdir="kubectl describe imagerepository"
+alias kdgit="kubectl describe gitrepository --namespace=flux-system"
+alias kdimgp="kubectl describe imagepolicies --namespace=flux-system"
+alias kdimgr="kubectl describe imagerepository --namespace=flux-system"
 
+alias kghr="kubectl get hr"
+alias kdhr="kubectl describe hr"
 
 # Simple debug pod
 alias kruntest="kubectl run test --image=debian:bullseye-slim -ti -- /bin/bash"
