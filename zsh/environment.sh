@@ -60,5 +60,10 @@ if command pyenv --version > /dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# add argo autocomplete
+if command argo --version > /dev/null 2>&1; then
+  . <(argo completion zsh 2>/dev/null)
+fi
+
 ## make pastes fast again
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'

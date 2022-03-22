@@ -21,3 +21,6 @@ alias dnls="docker network ls"
 ## Docker build commands
 alias db="docker build"
 alias dbf="docker build --progress=plain"
+
+## Debug
+alias ddbg="docker run --rm --name debug -ti --entrypoint=\"\""

@@ -16,7 +16,11 @@ if [ ! -z ${KCTX} ]; then
 fi
 
 if [ ! -z ${KNS} ]; then
-  namespace=${KNS}
+  if [ ! -z ${FLUX_NAMESPACE} ]; then
+    namespace=${FLUX_NAMESPACE}
+  else
+    namespace=${KNS}
+  fi
 fi
 
 if [ ! -z ${context} ]; then kctl_args="--context=${context}"; fi
