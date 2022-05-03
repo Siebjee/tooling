@@ -65,5 +65,16 @@ if command argo --version > /dev/null 2>&1; then
   . <(argo completion zsh 2>/dev/null)
 fi
 
+# add helm autocomplete
+if command helm --version > /dev/null 2>&1; then
+  . <(helm completion zsh 2>/dev/null)
+fi
+
+if test -d ~/.nvm; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
 ## make pastes fast again
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'

@@ -52,23 +52,23 @@ function _ksn_completions {
 }
 
 function ksn {
-  local new_ns=$1
+  local new_ns=${1:?"Specify a kube namespace"}
   local localKubeConfig=".kube_config"
   getLocalKubeConfig
 
   echo "Using kube config: ${localKubeConfig}"
   grep -q "^namespace" ${localKubeConfig} || echo "namespace=${new_ns}" >> ${localKubeConfig}
-  sed -i '' -e "s/namespace=.*/namespace=${new_ns}/" ${localKubeConfig}
+  sed -i '' -e "s#namespace=.*#namespace=${new_ns}#" ${localKubeConfig}
 }
 
 function ksc {
-  local new_ctx=$1
+  local new_ctx=${1:?"Specify a kubecontext string"}
   local localKubeConfig=".kube_config"
   getLocalKubeConfig
 
   echo "Using kube config: ${localKubeConfig}"
   grep -q "^context" ${localKubeConfig} || echo "context=${new_ctx}" >> ${localKubeConfig}
-  sed -i '' -e "s/context=.*/context=${new_ctx}/" ${localKubeConfig}
+  sed -i '' -e "s#context=.*#context=${new_ctx}#" ${localKubeConfig}
 }
 
 function _kcc {

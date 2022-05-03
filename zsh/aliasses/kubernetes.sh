@@ -32,6 +32,10 @@ alias kv="kubectl apply --validate=true --dry-run=true -f"
 # Generate yaml
 alias kgy="kubectl --dry-run=client -o yaml"
 
+# HPA
+alias kghpa="kubectl get hpa"
+alias kdhpa="kubectl describe hpa"
+
 # Rollout
 alias krrd="kubectl rollout restart deployment"
 
@@ -55,6 +59,18 @@ alias kdimgr="kubectl describe imagerepository --namespace=flux-system"
 
 alias kghr="kubectl get hr"
 alias kdhr="kubectl describe hr"
+
+# Argo
+alias kdwf="kubectl describe workflow"
+alias kdwft="kubectl describe workflowtemplate"
+alias kdcwft="kubectl describe clusterworkflowtemplate"
+
+alias kgwf="kubectl get workflow"
+alias kgwft="kubectl get workflowtemplate"
+alias kgcwft="kubectl get clusterworkflowtemplate"
+
+alias kges="kubectl get eventsource"
+alias kdes="kubectl describe eventsource"
 
 # Simple debug pod
 alias kruntest="kubectl run test --image=debian:bullseye-slim -ti -- /bin/bash"
