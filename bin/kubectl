@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-KUBECTL_BIN="/usr/local/bin/kubectl"
+if [ -z ${KUBECTL_VERSION} ]; then
+  KUBECTL_BIN="/usr/local/bin/kubectl"
+else
+  KUBECTL_BIN="/usr/local/bin/kubectl@${KUBECTL_VERSION}"
+fi
 
 cwd=$(pwd)
 until test -f .kube_config || [ "$(pwd)" = "/" ]; do

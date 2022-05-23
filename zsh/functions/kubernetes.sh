@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
+function kinst {
+  local version=${1/v/}
+  local binary="/usr/local/bin/kubectl@${version}"
+
+  if [ ! -f "${binary}" ]; then
+    echo "Downloading kubectl@${version}"
+    curl -L --silent "https://dl.k8s.io/release/v${version}/bin/darwin/amd64/kubectl" --output ${binary}
+    chmod +x ${binary}
+  else
+    echo "kubectl@${version} already installed"
+  fi
+}
+
 function getLocalKubeConfig {
   cwd=$(pwd)
   until test -f .kube_config || [ "$(pwd)" = "/" ]; do
