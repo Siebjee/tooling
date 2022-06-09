@@ -64,26 +64,6 @@ function _ksn_completions {
   COMPREPLY=($(compgen -W "$(kubectl get namespaces -o=jsonpath='{.items[*].metadata.name}' 2>/dev/null)" -- "${COMP_WORDS[1]}"))
 }
 
-function ksn {
-  local new_ns=${1:?"Specify a kube namespace"}
-  local localKubeConfig=".kube_config"
-  getLocalKubeConfig
-
-  echo "Using kube config: ${localKubeConfig}"
-  grep -q "^namespace" ${localKubeConfig} || echo "namespace=${new_ns}" >> ${localKubeConfig}
-  sed -i '' -e "s#namespace=.*#namespace=${new_ns}#" ${localKubeConfig}
-}
-
-function ksc {
-  local new_ctx=${1:?"Specify a kubecontext string"}
-  local localKubeConfig=".kube_config"
-  getLocalKubeConfig
-
-  echo "Using kube config: ${localKubeConfig}"
-  grep -q "^context" ${localKubeConfig} || echo "context=${new_ctx}" >> ${localKubeConfig}
-  sed -i '' -e "s#context=.*#context=${new_ctx}#" ${localKubeConfig}
-}
-
 function _kcc {
   unset KNS
   unset KCTX
@@ -109,5 +89,7 @@ complete -F _ksc_completions ksc
 complete -F _ksn_completions _ksn
 complete -F _ksc_completions _ksc
 
+alias ksc="_ksc"
+alias ksn="_ksn"
 
 ## Command functions

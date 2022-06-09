@@ -6,6 +6,7 @@ In a nutshell it's a build-up ontop of existing oh-my-zsh stuff.
 
 ### Prerequisites
 Install [zsh](https://github.com/ohmyzsh/ohmyzsh) and optionally configured as listed below
+(Optional) Install [the-ultimate-vimrc](https://github.com/amix/vimrc)
 
 #### zsh config
 * theme

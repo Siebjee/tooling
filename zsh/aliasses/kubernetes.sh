@@ -72,5 +72,9 @@ alias kgcwft="kubectl get clusterworkflowtemplate"
 alias kges="kubectl get eventsource"
 alias kdes="kubectl describe eventsource"
 
+# tail ingress
+alias klnginx="KNS=ingress-nginx kubectl logs --tail=-1 --timestamps -l app.kubernetes.io/name=ingress-nginx"
+alias klnginxf="KNS=ingress-nginx kubectl logs --tail=-1 --timestamps -f -l app.kubernetes.io/name=ingress-nginx"
+
 # Simple debug pod
 alias kruntest="kubectl run test --image=debian:bullseye-slim -ti -- /bin/bash"
