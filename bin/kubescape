@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+KUBESCAPE_BIN="/usr/local/bin/kubescape"
+
+cwd=$(pwd)
+until test -f .kube_config || [ "$(pwd)" = "/" ]; do
+  cd ..
+done
+if test -f .kube_config; then
+  source .kube_config
+fi
+cd ${cwd}
+
+if [ ! -z ${KCTX} ]; then
+  context=${KCTX}
+fi
+
+if [ ! -z ${context} ] && [ "$1" = "scan" ]; then
+  kctl_args="$1 --kube-context=${context}"
+  shift
+fi
+
+source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
+
+>&2 echo "[KUBESCAPE @ $(date "+%Y-%m-%d %H:%M:%S")] Using context: ${context}"
+${KUBESCAPE_BIN} ${kctl_args} $@
