@@ -40,6 +40,17 @@ source ${TOOLING_BASE_DIR}/zsh/environment.sh
 EOF
 ```
 
+### Vim
+Follow instructions of at https://github.com/amix/vimrc
+
+And execut the following commands
+```
+git clone git@github.com:ycm-core/YouCompleteMe.git ~/.vim_runtime/my_plugins/
+git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/
+
+ln -sf ${TOOLING_BASE_DIR}/vim/vimrc ~/.vim_runtime/my_configs.vim
+```
+
 ### Usage
 
 ```

@@ -57,6 +57,7 @@ fi
 
 # add flux autocomplete
 if command pyenv --version > /dev/null 2>&1; then
+  export PYTHON_CONFIGURE_OPTS="--enable-framework"
   eval "$(pyenv init -)"
 fi
 
@@ -78,3 +79,4 @@ fi
 
 ## make pastes fast again
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
+
