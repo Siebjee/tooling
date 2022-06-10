@@ -11,7 +11,8 @@ NERDTree
 
 let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
+
+if (&ft=='hcl')
+    autocmd BufWritePre,FileWritePre *.tf silent! !terraform fmt %
+endif
+
