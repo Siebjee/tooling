@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+autoload -U compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 
 source ${HOME}/.siebjee_tooling
 
@@ -31,11 +33,6 @@ done
 # initialize directory based hooks:
 source "${TOOLING_ZSH_DIR}/hooks/_hooks.zsh"
 
-# only add $TOOLING_BIN_DIR to path if it's not there.
-if [[ ${PATH} != *"${TOOLING_BIN_DIR}"* ]]; then
-  export PATH="${TOOLING_BIN_DIR}:${PATH}"
-fi
-
 # Enable docker & kubectl autocomplete
 for plugin in ${plugins}; do
   if [ "${plugin}" = "docker" ]; then
@@ -47,8 +44,6 @@ for plugin in ${plugins}; do
     fpath+=($ZSH/plugins/kubectl)
   fi
 done
-autoload -U compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
 
 # add flux autocomplete
 if command flux --version > /dev/null 2>&1; then
@@ -75,6 +70,14 @@ if test -d ~/.nvm; then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+# only add $TOOLING_BIN_DIR to path if it's not there.
+if [[ ${PATH} != *"${TOOLING_BIN_DIR}"* ]]; then
+  export PATH="${TOOLING_BIN_DIR}:${PATH}"
+else
+  # this makes sure that ${TOOLING_BIN_DIR} is early in the path
+  export PATH="${TOOLING_BIN_DIR}:${PATH/${TOOLING_BIN_DIR}:/}"
 fi
 
 ## make pastes fast again
