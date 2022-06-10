@@ -38,6 +38,9 @@ cat <<EOF >> ${HOME}/.zshrc
 source ${HOME}/.siebjee_tooling
 source ${TOOLING_BASE_DIR}/zsh/environment.sh
 EOF
+
+ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
+ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
 ```
 
 ### Vim
