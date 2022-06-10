@@ -11,8 +11,3 @@ NERDTree
 
 let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 
-
-if (&ft=='hcl')
-    autocmd BufWritePre,FileWritePre *.tf silent! !terraform fmt %
-endif
-

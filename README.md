@@ -54,6 +54,32 @@ git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/
 ln -sf ${TOOLING_BASE_DIR}/vim/vimrc ~/.vim_runtime/my_configs.vim
 ```
 
+#### Hacks
+Custom hack to make `terraform fmt` work
+```
+cat <<EOF > ~/.vim_runtime/my_plugins/vim-terraform/ftplugin/terraform.vim
+if !exists('g:terraform_binary_path')
+  let g:terraform_binary_path='terraform'
+endif
+
+if !executable(g:terraform_binary_path)
+  finish
+endif
+
+let s:cpo_save = &cpoptions
+set cpoptions&vim
+
+command! -nargs=+ -complete=custom,terraform#commands -buffer Terraform
+  \ execute '!'.g:terraform_binary_path.' '.<q-args>.' -no-color'
+
+augroup vim.terraform.fmt
+  autocmd!
+  autocmd BufWritePre *.tf call terraform#fmt()
+  autocmd BufWritePre *.tfvars call terraform#fmt()
+augroup END
+EOF
+```
+
 ### Usage
 
 ```
