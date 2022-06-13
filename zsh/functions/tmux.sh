@@ -1,12 +1,17 @@
 function tux {
-    local arg=$1
+    local session=$1
 
-    case $arg in
-        *)
-            tmux attach-session -t $1 -f ${TOOLING_ZSH_DIR}/tmux/tmux.conf \
-            || tmux new-session -s $1 -f ${TOOLING_ZSH_DIR}/tmux/tmux.conf
-        ;;
-    esac
+    tmux attach-session -t ${session} -f ${TOOLING_BASE_DIR}/tmux/tmux.conf \
+    || tmux new-session -d -s ${session} -f ${TOOLING_BASE_DIR}/tmux/tmux.conf
+
+    if [ -f "${TOOLING_BASE_DIR}/tmux/myconfig/${session}.tmux" ]; then
+        if [[ ! -x "${TOOLING_BASE_DIR}/tmux/myconfig/${session}.tmux" ]]; then
+            chmod +x "${TOOLING_BASE_DIR}/tmux/myconfig/${session}.tmux"
+        fi
+        session=${session} . ${TOOLING_BASE_DIR}/tmux/myconfig/${session}.tmux
+    fi
+
+    tmux attach-session -t ${session}:0
 }
 
 function _tux_completions {

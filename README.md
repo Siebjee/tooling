@@ -48,10 +48,15 @@ Follow instructions of at https://github.com/amix/vimrc
 
 And execut the following commands
 ```
+
 git clone git@github.com:ycm-core/YouCompleteMe.git ~/.vim_runtime/my_plugins/
 git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/
 
 ln -sf ${TOOLING_BASE_DIR}/vim/vimrc ~/.vim_runtime/my_configs.vim
+
+mkdir -p ~/.vim_runtime/my_plugins
+curl -fLo ~/.vim_runtime/my_plygins/vim-plug/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 ```
 
 #### Hacks
@@ -134,4 +139,12 @@ The CLI wrappers still stupport the `--namespace` as far as the original command
 ```
 kubectl apply -f deployment.yaml --namespace foobar
 flux reconcile kustomization foobar --namespace baz
+```
+
+#### Customizing tmux statup windows
+Create a file like shown below, and modify it as you'd like. The `tux` function will take care of the rest
+```bash
+cat <<EOF > ${TOOLING_BASE_DIR}/tmux/myconfig/test.tmux
+#! /bin/bash
+tmux new-window -t $session:1 -n 'My test window'
 ```
