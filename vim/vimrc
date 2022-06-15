@@ -9,7 +9,7 @@ set number
 let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 
 let g:NERDTreeWinPos = "left"
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 call plug#begin('~/.vim_runtime/my_plugins')
 Plug 'christoomey/vim-tmux-navigator'
