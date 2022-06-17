@@ -6,6 +6,12 @@ function gitopen() {
         "https://"*)
             remote_url=${remote}
         ;;
+        "git@ssh.dev.azure.com"*)
+            remote_url=$(echo ${remote} |sed -e 's/git@//g' -e 's/:v3//g' -e 's/ssh.//g')
+            repo=$(echo ${remote_url} |rev | cut -d '/' -f 1 | rev)
+            remote_url=$(echo ${remote_url/${repo}/_git\/${repo}})
+            remote_url="https://${remote_url}"
+        ;;
         "git@"*)
             remote_url="https://$(echo ${remote} |sed -e 's/git@//g' -e 's/:/\//g')"
         ;;
