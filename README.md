@@ -64,6 +64,8 @@ curl -fLo ~/.vim_runtime/my_plugins/vim-plug/plug.vim --create-dirs https://raw.
 ```
 npm i -g bash-language-server
 
+brew install hashicorp/tap/terraform-ls
+
 ln -sf ${TOOLING_BASE_DIR}/vim/coc-settings.json ~/.vim/coc-settings.json
 ```
 
