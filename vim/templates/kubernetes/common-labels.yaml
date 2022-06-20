@@ -1,0 +1,12 @@
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: global-labels
+labels:
+  app.kubernetes.io/name: my-name
+  app.kubernetes.io/component: my-name
+  app.kubernetes.io/instance: my-name
+  app.kubernetes.io/managed-by: flux
+fieldSpecs:
+- path: metadata/labels
+  create: true

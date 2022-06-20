@@ -6,11 +6,54 @@ set listchars=tab:>-,trail:·,nbsp:·,extends:>,precedes:<
 
 set number
 
+set scrolloff=2
+
 let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 
 let g:NERDTreeWinPos = "left"
 let g:indent_guides_enable_on_vim_startup = 0
 
+" Disable auto-pair from putting cursor in the center-line when opening a 'pair'
+let g:AutoPairsCenterLine = 0
+
+" map <leader>go :!gitopen<cr>
+
+" Terraform language server
+if executable('terraform-ls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'terraform-ls',
+        \ 'cmd': {server_info->['terraform-ls', 'serve']},
+        \ 'whitelist': ['terraform'],
+        \ })
+endif
+
 call plug#begin('~/.vim_runtime/my_plugins')
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/vim-plug'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.sh 0r ${TOOLING_BASE_DIR}/vim/templates/skeleton.sh
+    autocmd BufNewFile *.py 0r ${TOOLING_BASE_DIR}/vim/templates/skeleton.py
+  augroup END
+  augroup kubernetes_templates
+    autocmd BufNewFile clusterrole.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/clusterrole.yaml
+    autocmd BufNewFile clusterrolebinding.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/clusterrolebinding.yaml
+    autocmd BufNewFile common-labels.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/common-labels.yaml
+    autocmd BufNewFile configmap.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/configmap.yaml
+    autocmd BufNewFile deployment.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/deployment.yaml
+    autocmd BufNewFile ingress.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/ingress.yaml
+    autocmd BufNewFile kustomization.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/kustomization.yaml
+    autocmd BufNewFile namespace.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/namespace.yaml
+    autocmd BufNewFile pv.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/pv.yaml
+    autocmd BufNewFile pvc.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/pvc.yaml
+    autocmd BufNewFile role.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/role.yaml
+    autocmd BufNewFile rolebinding.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/rolebinding.yaml
+    autocmd BufNewFile secret.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/secret.yaml
+    autocmd BufNewFile service.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/service.yaml
+  augroup END
+endif
+

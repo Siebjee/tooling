@@ -55,8 +55,16 @@ git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/
 ln -sf ${TOOLING_BASE_DIR}/vim/vimrc ~/.vim_runtime/my_configs.vim
 
 mkdir -p ~/.vim_runtime/my_plugins
-curl -fLo ~/.vim_runtime/my_plygins/vim-plug/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -fLo ~/.vim_runtime/my_plugins/vim-plug/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+```
+
+### Language servers
+
+```
+npm i -g bash-language-server
+
+ln -sf ${TOOLING_BASE_DIR}/vim/coc-settings.json ~/.vim/coc-settings.json
 ```
 
 #### Hacks

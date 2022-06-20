@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echo
+  namespace: default
+  labels:
+    app.kubernetes.io/name: echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: echo
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: echo
+    spec:
+      imagePullSecrets:
+      - name: docker-hub
+      containers:
+      - image: nginx:alpine
+        imagePullPolicy: IfNotPresent
+        name: echo
+        ports:
+        - containerPort: 8080
+        env:
+          - name: FOO
+            value: FOOBAR
+        envFrom:
+        - configMapRef:
+            name: env-vars
+        resources:
+          limits:
+            cpu: 100m
+            memory: 300Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
