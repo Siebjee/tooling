@@ -20,6 +20,11 @@ Cheetsheet for VIM, TMUX and iTerm2
 | `q#`                   | Record macro at character # (Any input is accepted here, eg: `q1` records at 1) |
 | `@#`                   | Replay recorded macro at character #                                            |
 
+#### NERDTree
+| command                | Description                                                                     |
+|:-----------------------|:--------------------------------------------------------------------------------|
+| `⇧+i`                  | In NerdTree show hidden files and directories                                   |
+
 #### Tips
 * A number eg: `10` and then a vim command (not limited to movemets) will repeat that command X times.
     ```
