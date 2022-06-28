@@ -39,6 +39,10 @@ source ${HOME}/.siebjee_tooling
 source ${TOOLING_BASE_DIR}/zsh/environment.sh
 EOF
 
+# This is to make npm install global packages in the directory below
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+
 ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
 ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
 ```
