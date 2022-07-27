@@ -2,7 +2,10 @@
 set tabstop=2
 
 set list
-set listchars=tab:>-,trail:·,nbsp:·,extends:>,precedes:<
+set listchars=tab:»\ ,trail:·,nbsp:·,extends:>,precedes:<
+
+highlight NonText ctermfg=darkgrey guifg=grey60
+highlight SpecialKey ctermfg=darkgrey guifg=grey60
 
 set number
 
@@ -31,9 +34,12 @@ call plug#begin('~/.vim_runtime/my_plugins')
 Plug 'junegunn/vim-plug'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 
 call plug#end()
 
+" Kubernetes templating
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.sh 0r ${TOOLING_BASE_DIR}/vim/templates/skeleton.sh
@@ -57,3 +63,13 @@ if has("autocmd")
   augroup END
 endif
 
+" GoLang
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
