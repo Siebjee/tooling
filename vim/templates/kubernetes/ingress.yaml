@@ -10,7 +10,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
 spec:
-  ingressClass: nginx
+  ingressClassName: nginx
   tls:
   - hosts:
     - example.com

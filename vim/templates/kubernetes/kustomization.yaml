@@ -17,5 +17,5 @@ configMapGenerator:
   - SERVICES_LOG_LEVEL=ERROR
 
 images:
-- name: nginx:1.2.3
+- name: nginx
   newName: private/nginx:1.2.3
