@@ -19,6 +19,7 @@ Cheetsheet for VIM, TMUX and iTerm2
 | `:buffer 1`            | Opens buffer 1, or any other number                                             |
 | `q#`                   | Record macro at character # (Any input is accepted here, eg: `q1` records at 1) |
 | `@#`                   | Replay recorded macro at character #                                            |
+| `lopen`                | Open the linting error menu                                                     |
 
 #### Markdown
 | command        | Description               |
