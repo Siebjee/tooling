@@ -1,4 +1,6 @@
 " Show invisible characters
+unmap <space>
+
 set tabstop=2
 
 set list

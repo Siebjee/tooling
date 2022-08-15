@@ -21,6 +21,18 @@ Cheetsheet for VIM, TMUX and iTerm2
 | `@#`                   | Replay recorded macro at character #                                            |
 | `lopen`                | Open the linting error menu                                                     |
 
+#### Spell Check
+| command                | Description                                                                     |
+|:-----------------------|:--------------------------------------------------------------------------------|
+| `,ss`                  | Enalbe spell check                                                              |
+| `,s?`                  | Give suggestion of work correction                                              |
+| `[s`                   | Go to next wrong spelled word                                                   |
+| `]s`                   | Go to previous wrong spelled word                                               |
+| `zg`                   | Mark the word as a good word                                                    |
+| `zw`                   | Mark the word as a bad word                                                     |
+| `zug`                  | Undo the Mark word as a good word                                               |
+| `zuw`                  | Undo the Mark word as a bad word                                                |
+
 #### Markdown
 | command        | Description               |
 |:---------------|:--------------------------|
