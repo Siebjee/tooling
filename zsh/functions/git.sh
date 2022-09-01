@@ -28,3 +28,8 @@ function gitopen() {
         open ${remote_url} -a "${browser}"
     fi
 }
+
+function gpo {
+    local git_branch=$(git branch | awk '/^[*]/{print $2}')
+    git push origin ${git_branch}
+}

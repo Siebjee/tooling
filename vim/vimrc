@@ -1,8 +1,12 @@
-" Show invisible characters
-unmap <space>
+" Toggle for easy access to paste/no paste
+nnoremap <leader>p :set paste!<cr>
+
+" Put selection into pbcopy
+vnoremap <leader>c !pbcopy<cr>u
 
 set tabstop=2
 
+" Show invisible characters
 set list
 set listchars=tab:»\ ,trail:·,nbsp:·,extends:>,precedes:<
 
@@ -77,4 +81,3 @@ let g:go_highlight_types = 1
 let g:go_highlight_variable_declarations = 1
 
 let g:go_fmt_command = "goimports"
-

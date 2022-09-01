@@ -9,7 +9,8 @@ Cheetsheet for VIM, TMUX and iTerm2
 * [iTerm2](#iterm2)
 
 ### VIM
-| command                | Description                                                                     |
+
+| Command                | Description                                                                     |
 |:-----------------------|:--------------------------------------------------------------------------------|
 | `:noh`                 | Disable search highlight till next search                                       |
 | `:%bd\e#`              | Close all buffers but current                                                   |
@@ -22,7 +23,8 @@ Cheetsheet for VIM, TMUX and iTerm2
 | `lopen`                | Open the linting error menu                                                     |
 
 #### Spell Check
-| command                | Description                                                                     |
+
+| Command                | Description                                                                     |
 |:-----------------------|:--------------------------------------------------------------------------------|
 | `,ss`                  | Enalbe spell check                                                              |
 | `,s?`                  | Give suggestion of work correction                                              |
@@ -33,18 +35,27 @@ Cheetsheet for VIM, TMUX and iTerm2
 | `zug`                  | Undo the Mark word as a good word                                               |
 | `zuw`                  | Undo the Mark word as a bad word                                                |
 
+#### Folds Check
+
+| Command                | Description                                                                     |
+|:-----------------------|:--------------------------------------------------------------------------------|
+| `zr`                   | Unfold all folds                                                                |
+
 #### Markdown
-| command        | Description               |
+
+| Command        | Description               |
 |:---------------|:--------------------------|
 | `:TableFormat` | Format the markdown table
 
 #### NERDTree
-| command | Description                                   |
+
+| Command | Description                                   |
 |:--------|:----------------------------------------------|
-| `⇧+i`   | In NerdTree show hidden files and directories |
-| `⇧+r`   | In NerdTree refresh files and directories     |
+| `shift+i`   | In NerdTree show hidden files and directories |
+| `shift+r`   | In NerdTree refresh files and directories     |
 
 #### Tips
+
 * A number eg: `10` and then a vim command (not limited to movemets) will repeat that command X times.
     ```
     10@#
@@ -64,7 +75,8 @@ Cheetsheet for VIM, TMUX and iTerm2
 
 ### TMUX
 #### Bindings
-| command      | Description                           |
+
+| Command      | Description                           |
 |:-------------|:--------------------------------------|
 | `<prefix>-?` | Show bindings                         |
 | `<prefix>-1` | Move to window 1, or any other number |
@@ -73,16 +85,18 @@ Cheetsheet for VIM, TMUX and iTerm2
 | `<prefix>-w` | List windows                          |
 
 #### Commands
-| command                                | Description                                                               |
+
+| Command                                | Description                                                               |
 |:---------------------------------------|:--------------------------------------------------------------------------|
 | `:new-window -t session:1 -n "foobar"` | Create new tmux window in session "session" at index 1 with name "foobar" |
 | `:send-keys -t session:1 ...`          | Send keys to tmux session "session" index 1                               |
 | `:list-keys`                           | List all keybindins in all modes (copy-mode copy-mode-vi prefix root)     |
-
+| `:select-pane -e`                      | Enables input on the selected pane                                        |
+| `:select-pane -d`                      | Disable input on the selected pane                                        |
 
 ### iTerm2
 
-| command  | Description                               |
+| Command  | Description                               |
 |:---------|:------------------------------------------|
 | `⌘+d`    | Vertical split                            |
 | `⌘+⇧+d`  | Horizontal split                          |

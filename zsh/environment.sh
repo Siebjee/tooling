@@ -50,7 +50,7 @@ if command flux --version > /dev/null 2>&1; then
   . <(flux completion zsh 2>/dev/null)
 fi
 
-# add flux autocomplete
+# add pyenv autocomplete
 if command pyenv --version > /dev/null 2>&1; then
   export PYTHON_CONFIGURE_OPTS="--enable-framework"
   eval "$(pyenv init -)"
@@ -68,9 +68,18 @@ fi
 
 if test -d ~/.nvm; then
   export NVM_DIR="$HOME/.nvm"
-  export PATH="~/.npm-global/bin:${PATH}"
+  if [[ ${PATH} != *".npm-global/bin"* ]]; then
+    export PATH="~/.npm-global/bin:${PATH}"
+  fi
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+if test -d ~/.rd/bin; then
+    if [[ ${PATH} != *".rd/bin"* ]]; then
+      export PATH="~/.rd/bin:${PATH}"
+      alias docker="~/.rd/bin/docker"
+    fi
 fi
 
 # only add $TOOLING_BIN_DIR to path if it's not there.
@@ -84,3 +93,4 @@ fi
 ## make pastes fast again
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
+# vim: shiftwidth=2 tabstop=2

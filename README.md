@@ -43,6 +43,9 @@ EOF
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 
+# Install mdless gem
+sudo gem install mdless
+
 ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
 ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
 ```
@@ -50,9 +53,9 @@ ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
 ### Vim
 Follow instructions of at https://github.com/amix/vimrc
 
-And execut the following commands
-```
+And execute the following commands
 
+```
 git clone git@github.com:ycm-core/YouCompleteMe.git ~/.vim_runtime/my_plugins/
 git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/
 
@@ -60,7 +63,6 @@ ln -sf ${TOOLING_BASE_DIR}/vim/vimrc ~/.vim_runtime/my_configs.vim
 
 mkdir -p ~/.vim_runtime/my_plugins
 curl -fLo ~/.vim_runtime/my_plugins/vim-plug/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 ```
 
 ### Language servers
