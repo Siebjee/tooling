@@ -93,3 +93,9 @@ alias ksc="_ksc"
 alias ksn="_ksn"
 
 ## Command functions
+function kgpon {
+    local label=$1
+    for node in $(kubectl get nodes -l ${label} -ojsonpath='{.items[*].metadata.name}'); do
+        kubectl get pods -A -owide --field-selector spec.nodeName=${node}
+    done
+}

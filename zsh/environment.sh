@@ -78,6 +78,8 @@ fi
 if test -d ~/.rd/bin; then
     if [[ ${PATH} != *".rd/bin"* ]]; then
       export PATH="~/.rd/bin:${PATH}"
+      # Assuming rancher runs without sudo (Recommended)
+      export DOCKER_HOST=unix://${HOME}/.rd/docker.sock
       alias docker="~/.rd/bin/docker"
     fi
 fi

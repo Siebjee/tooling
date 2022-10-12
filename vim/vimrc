@@ -4,6 +4,15 @@ nnoremap <leader>p :set paste!<cr>
 " Put selection into pbcopy
 vnoremap <leader>c !pbcopy<cr>u
 
+" Delete command W for sudo write, and replace it with SW
+delcommand W
+command! SW execute 'w !sudo tee % > /dev/null' <bar> edit!
+
+" Splits always below active pane
+set splitbelow
+" Splits always right of active pane
+set splitright
+
 set tabstop=2
 
 " Show invisible characters

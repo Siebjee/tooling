@@ -31,5 +31,5 @@ function gitopen() {
 
 function gpo {
     local git_branch=$(git branch | awk '/^[*]/{print $2}')
-    git push origin ${git_branch}
+    git push origin ${git_branch} $@
 }
