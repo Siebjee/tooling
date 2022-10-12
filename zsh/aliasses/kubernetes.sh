@@ -78,3 +78,6 @@ alias klnginxf="KNS=ingress-nginx kubectl logs --tail=-1 --timestamps -f -l app.
 
 # Simple debug pod
 alias kruntest="kubectl run test --image=debian:bullseye-slim -ti -- /bin/bash"
+
+# Stern
+alias stern="stern --timestamps --timezone utc"
