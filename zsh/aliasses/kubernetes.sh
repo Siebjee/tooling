@@ -81,3 +81,6 @@ alias kruntest="kubectl run test --image=debian:bullseye-slim -ti -- /bin/bash"
 
 # Stern
 alias stern="stern --timestamps --timezone utc"
+
+# Delete failed pods
+alias kdpf="kubectl delete pods --field-selector=status.phase=Failed"
