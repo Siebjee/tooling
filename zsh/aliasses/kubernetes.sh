@@ -38,6 +38,8 @@ alias kdhpa="kubectl describe hpa"
 
 # Rollout
 alias krrd="kubectl rollout restart deployment"
+alias krrds="kubectl rollout restart daemonset"
+alias krrs="kubectl rollout restart statefulset"
 
 alias kgpi="kubectl get pods -o=jsonpath='{range .items[*]}{range .spec.containers[*]}{.name}{\"\t\"}{.image}{\"\n\"}'"
 alias kgw="kubectl get --watch"
