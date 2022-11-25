@@ -1,4 +1,5 @@
 alias kst="kustomize"
 alias kstb="kustomize build"
+alias kstbt="kustomize build | ktest"
 alias kstbka="kustomize build . | kubectl apply -f -"
 alias kstbkad="kustomize build . | kubectl delete -f -"
