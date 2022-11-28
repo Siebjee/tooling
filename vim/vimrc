@@ -5,7 +5,9 @@ nnoremap <leader>p :set paste!<cr>
 vnoremap <leader>c !pbcopy<cr>u
 
 " Delete command W for sudo write, and replace it with SW
-delcommand W
+if exists(":W")
+    delcommand W
+endif
 command! SW execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 " Splits always below active pane
@@ -29,7 +31,12 @@ set scrolloff=2
 let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 
 let g:NERDTreeWinPos = "left"
-let g:indent_guides_enable_on_vim_startup = 0
+
+" Indentations
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=6
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 " Disable auto-pair from putting cursor in the center-line when opening a 'pair'
 let g:AutoPairsCenterLine = 0
@@ -90,3 +97,5 @@ let g:go_highlight_types = 1
 let g:go_highlight_variable_declarations = 1
 
 let g:go_fmt_command = "goimports"
+
+set foldlevelstart=100
