@@ -35,7 +35,8 @@ git clone git@github.com:Siebjee/tooling.git
 
 cd tooling
 brew install mas # Required for mas installations via brew Bundle
-brew bundle --file brew/Bundle
+brew bundle --file brew/Brewfile
+brew bundle --file brew/minimal.Brewfile
 
 cat <<EOF > ${HOME}/.siebjee_tooling
 export TOOLING_BASE_DIR="$(pwd)"
