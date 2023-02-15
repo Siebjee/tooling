@@ -5,8 +5,14 @@ My personal tooling repository. To be documented still...
 In a nutshell it's a build-up ontop of existing oh-my-zsh stuff.
 
 ### Prerequisites
-Install [zsh](https://github.com/ohmyzsh/ohmyzsh) and optionally configured as listed below
-(Optional) Install [the-ultimate-vimrc](https://github.com/amix/vimrc)
+Install:
+* [HomeBrew](https://github.com/Homebrew/brew/)
+
+Or install zsh manually
+* [zsh](https://github.com/ohmyzsh/ohmyzsh)
+
+Optionally install:
+* [the-ultimate-vimrc](https://github.com/amix/vimrc)
 
 #### zsh config
 * theme
@@ -28,6 +34,8 @@ To install this framework
 git clone git@github.com:Siebjee/tooling.git
 
 cd tooling
+brew install mas # Required for mas installations via brew Bundle
+brew bundle --file brew/Bundle
 
 cat <<EOF > ${HOME}/.siebjee_tooling
 export TOOLING_BASE_DIR="$(pwd)"
@@ -39,15 +47,9 @@ source ${HOME}/.siebjee_tooling
 source ${TOOLING_BASE_DIR}/zsh/environment.sh
 EOF
 
-# This is to make npm install global packages in the directory below
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-
-# Install mdless gem
-sudo gem install mdless
-
 ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
 ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
+ln -sf ${TOOLING_BASE_DIR}/brew/Bundle ~/.Bundle
 ```
 
 ### Vim
@@ -67,11 +69,9 @@ curl -fLo ~/.vim_runtime/my_plugins/vim-plug/plug.vim --create-dirs https://raw.
 
 ### Language servers
 
+Via the brew bundle we've installed `bash-language-server` and `terraform-ls`. Now to enable the `coc` config:
+
 ```
-npm i -g bash-language-server
-
-brew install hashicorp/tap/terraform-ls
-
 ln -sf ${TOOLING_BASE_DIR}/vim/coc-settings.json ~/.vim/coc-settings.json
 ```
 
@@ -115,11 +115,11 @@ EOF
 │   └── kubectl               # kubectl CLI wrapper
 └── zsh
     ├── aliasses
-    │   ├── argo.sh           # argo      CLI aliasses that i found usefull over time
-    │   ├── flux.sh           # flux      CLI aliasses that i found usefull over time
-    │   ├── kubernetes.sh     # kubectl   CLI aliasses that i found usefull over time (next to those from zsh plugin)
-    │   ├── kustomize.sh      # kustomize CLI aliasses that i found usefull over time
-    │   └── terraform.sh      # terraform CLI aliasses that i found usefull over time
+    │   ├── argo.sh           # argo      CLI aliasses that I found usefull over time
+    │   ├── flux.sh           # flux      CLI aliasses that I found usefull over time
+    │   ├── kubernetes.sh     # kubectl   CLI aliasses that I found usefull over time (next to those from zsh plugin)
+    │   ├── kustomize.sh      # kustomize CLI aliasses that I found usefull over time
+    │   └── terraform.sh      # terraform CLI aliasses that I found usefull over time
     ├── environment
     ├── environment.sh
     ├── functions

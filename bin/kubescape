@@ -22,5 +22,11 @@ fi
 
 source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
 
+case $1 in
+    "get")
+        kctl_args="${kctl_args} --sort-by=.metadata.creationTimestamp"
+    ;;
+esac
+
 >&2 echo "[KUBESCAPE @ $(date "+%Y-%m-%d %H:%M:%S")] Using context: ${context}"
 ${KUBESCAPE_BIN} ${kctl_args} $@

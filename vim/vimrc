@@ -7,6 +7,7 @@ vnoremap <leader>c !pbcopy<cr>u
 " Delete command W for sudo write, and replace it with SW
 if exists(":W")
     delcommand W
+    command! W execute 'w'
 endif
 command! SW execute 'w !sudo tee % > /dev/null' <bar> edit!
 

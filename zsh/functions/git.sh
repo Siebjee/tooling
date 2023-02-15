@@ -25,7 +25,8 @@ function gitopen() {
     if [ "${browser}" = "default" ]; then
         open ${remote_url}
     else
-        open ${remote_url} -a "${browser}"
+        # open ${remote_url} -a "${browser}"
+        echo ${remote_url} | pbcopy
     fi
 }
 

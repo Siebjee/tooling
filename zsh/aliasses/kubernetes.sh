@@ -38,9 +38,9 @@ alias kghpa="kubectl get hpa"
 alias kdhpa="kubectl describe hpa"
 
 # Rollout
-alias krrd="kubectl rollout restart deployment"
-alias krrds="kubectl rollout restart daemonset"
-alias krrs="kubectl rollout restart statefulset"
+alias krrd="kubectl --field-manager=flux-client-side-apply rollout restart deployment"
+alias krrds="kubectl --field-manager=flux-client-side-apply rollout restart daemonset"
+alias krrs="kubectl --field-manager=flux-client-side-apply rollout restart statefulset"
 
 alias kgpi="kubectl get pods -o=jsonpath='{range .items[*]}{range .spec.containers[*]}{.name}{\"\t\"}{.image}{\"\n\"}'"
 alias kgw="kubectl get --watch"
