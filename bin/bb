@@ -1,0 +1,41 @@
+#!/bin/bash
+
+set -e
+
+bundle=$1
+bundles=$(ls ${TOOLING_BASE_DIR}/brew/*.Brewfile)
+
+function f_help {
+cat <<EOF_HELP
+Usage: $0 ARGUMENT
+
+Arguments:
+    all: run brew bundle on all available Brewfiles
+    help: Show this help message
+
+    <brewfile>: run brew bundle on provided Brewfile
+EOF_HELP
+return 0
+}
+
+if test -z $bundle; then
+    f_help
+    exit 1
+fi
+
+case $1 in
+  "all")
+    for bundle in ${bundles}; do
+        brew bundle --file ${TOOLING_BASE_DIR}/brew/${bundle}
+    done
+    ;;
+  "help")
+      f_help
+    ;;
+  "Brewfile")
+    brew bundle --file ${TOOLING_BASE_DIR}/brew/Brewfile
+    ;;
+  *)
+    brew bundle --file ${TOOLING_BASE_DIR}/brew/${bundle//.Brewfile}.Brewfile
+    ;;
+esac

@@ -1,0 +1,11 @@
+# Homebrew
+# https://github.com/Homebrew/brew/
+brew "argo"
+brew "argocd"
+brew "hadolint"
+brew "helm"
+brew "kubeseal"
+brew "kustomize"
+brew "stern"
+brew "yamllint"
+brew "yq"

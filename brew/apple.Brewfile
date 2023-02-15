@@ -1,0 +1,13 @@
+mas "Freeform"
+mas "Keynote"
+mas "Numbers"
+mas "Pages"
+mas "Xcode"
+
+mas "1Password for Safari"
+mas "1Blocker"
+mas "luxafor"
+mas "Slack"
+mas "WhatsApp"
+mas "WiFi Explorer"
+mas "WiFi Signal"
