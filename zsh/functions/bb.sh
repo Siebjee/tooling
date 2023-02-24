@@ -1,4 +1,3 @@
-shopt -s progcomp
 function _bb {
     BREW_FILES=$(find ${TOOLING_BASE_DIR}/brew -type f -depth 1 ! -iname "*.lock.json"| rev | cut -d '/' -f 1 | rev)
     NAMED_OPTIONS="all help show"
