@@ -9,7 +9,42 @@ Cheetsheet for VIM, TMUX and iTerm2
 * [iTerm2](#iterm2)
 
 ### VIM
+Generic naviation keys
 
+`h` - left
+`j` - up
+`k` - down
+`l` - right
+
+`^` - Start of the row
+`$` - Start of the row
+
+#### Modes
+| Command             | Description                                       |
+|:--------------------|:--------------------------------------------------|
+| `<ESC>`             | Normal mode                                       |
+| `i`                 | Insert mode                                       |
+| `I`                 | Insert mode beginning of line                     |
+| `a`                 | Insert mode 1 column after the cursor             |
+| `A`                 | Insert mode end of line                           |
+| `o`                 | Insert mode with new line below                   |
+| `O`                 | Insert mode with new line above                   |
+| `v`                 | Visual mode                                       |
+| `V`                 | Visual mode line                                  |
+| `<CTRL>V`           | Visual mode BLOCK                                 |
+| `<LEADER>p`         | Paste mode                                        |
+
+#### In file navigation
+| Command         | Description                                           |
+|:----------------|:------------------------------------------------------|
+| `h`             | Move cursor left                                      |
+| `j`             | Move cursor up                                        |
+| `k`             | Move cursor down                                      |
+| `l`             | Move cursor right                                     |
+| `w`             | Jump word forward                                     |
+| `b`             | Jump word backwards                                   |
+
+#### Generic
 | Command                | Description                                                                     |
 |:-----------------------|:--------------------------------------------------------------------------------|
 | `:noh`                 | Disable search highlight till next search                                       |
@@ -21,6 +56,7 @@ Cheetsheet for VIM, TMUX and iTerm2
 | `q#`                   | Record macro at character # (Any input is accepted here, eg: `q1` records at 1) |
 | `@#`                   | Replay recorded macro at character #                                            |
 | `lopen`                | Open the linting error menu                                                     |
+| `<LEADER>c`            | Copy selected lines with pbcopy                                                 |
 
 #### Spell Check
 
@@ -39,7 +75,32 @@ Cheetsheet for VIM, TMUX and iTerm2
 
 | Command                | Description                                                                     |
 |:-----------------------|:--------------------------------------------------------------------------------|
+| `zf`                   | Create fold from selection VISUAL MODE ONLY                                     |
 | `zr`                   | Unfold all folds                                                                |
+
+#### Pane/Split navigation
+| Command                | Description                                                                     |
+|:-----------------------|:--------------------------------------------------------------------------------|
+| `<CTRL>h`              | Move to pane left from cursor                                                   |
+| `<CTRL>j`              | Move to pane below from cursor                                                  |
+| `<CTRL>k`              | Move to pane above from cursor                                                  |
+| `<CTRL>l`              | Move to pane right from cursor                                                  |
+
+#### File navigation
+##### Nerd Tree
+| Command                | Description                                                                     |
+|:-----------------------|:--------------------------------------------------------------------------------|
+| `<leader>nf`           | Open NERDTree                                                                   |
+| `<RETURN>`             | Open selected file                                                              |
+| `s`                    | Open selected file in vertical split                                            |
+| `i`                    | Open selected file in horizontal split                                          |
+
+##### CTRLP
+| Command                | Description                                                                     |
+|:-----------------------|:--------------------------------------------------------------------------------|
+| `<CTRL>f`              | Open CTRLP                                                                      |
+| `<RETURn>`             | Open selected file                                                              |
+| `<CTRL>x`              | Open selected file in horizontal split                                          |
 
 #### Markdown
 
