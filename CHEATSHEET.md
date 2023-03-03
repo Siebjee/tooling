@@ -9,16 +9,9 @@ Cheetsheet for VIM, TMUX and iTerm2
 * [iTerm2](#iterm2)
 
 ### VIM
+[Essentials Cheetsheet](https://vimsheet.com)
+
 Generic naviation keys
-
-`h` - left
-`j` - up
-`k` - down
-`l` - right
-
-`^` - Start of the row
-`$` - Start of the row
-
 #### Modes
 | Command             | Description                                       |
 |:--------------------|:--------------------------------------------------|
@@ -43,6 +36,10 @@ Generic naviation keys
 | `l`             | Move cursor right                                     |
 | `w`             | Jump word forward                                     |
 | `b`             | Jump word backwards                                   |
+| `gg`            | Jump to top of document                               |
+| `G`             | Jump to bottom of document                            |
+| `<SHIFT>[`      | Jump to next new line                                 |
+| `<SHIFT>]`      | Jump to previous new line                             |
 
 #### Generic
 | Command                | Description                                                                     |
