@@ -9,7 +9,7 @@ fi
 export TERRAFORM_VERSION=0.12.13
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export ZSH=/Users/siebjee/.oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 export ZSH_TMUX_AUTOCONNECT=true
 ZSH_THEME=powerlevel10k/powerlevel10k
 plugins=(terraform docker docker-compose zsh-autosuggestions git tmux virtualenv kubectl aws globalias)
