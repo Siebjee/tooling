@@ -43,7 +43,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ### Installation
 To install this framework
 ```
-git clone git@github.com:Siebjee/tooling.git
+git clone https://github.com/Siebjee/tooling.git
 
 cd tooling
 brew install mas # Required for mas installations via brew Bundle
@@ -60,8 +60,9 @@ source ${HOME}/.siebjee_tooling
 source ${TOOLING_BASE_DIR}/zsh/environment.sh
 EOF
 
-ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zshrc
+ln -sf ${TOOLING_BASE_DIR}/zsh/zshrc ~/.zshrc
 ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
+ln -sf ${TOOLING_BASE_DIR}/zsh/p10k.zsh ~/.p10k.zsh
 ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
 ln -sf ${TOOLING_BASE_DIR}/brew/Bundle ~/.Bundle
 ```
