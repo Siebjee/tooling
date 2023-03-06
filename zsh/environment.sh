@@ -83,6 +83,8 @@ else
   export PATH="${TOOLING_BIN_DIR}:${PATH/${TOOLING_BIN_DIR}:/}"
 fi
 
+unset LS_COLORS
+
 ## make pastes fast again
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 
