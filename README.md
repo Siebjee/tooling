@@ -6,6 +6,7 @@ In a nutshell it's a build-up ontop of existing oh-my-zsh stuff.
 
 ### Prerequisites
 Install:
+* [OhMyZSH](https://ohmyz.sh)
 * [HomeBrew](https://github.com/Homebrew/brew/)
 
 Or install zsh manually
@@ -22,11 +23,22 @@ Optionally install:
   * docker
   * docker-compose
   * zsh-autosuggestions
+  * zsh-syntax-highlighting
   * git
   * tmux
   * virtualenv
   * kubectl
   * aws
+
+### Prerequisites Installation
+#### OmMyZSH
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+#### HomeBrew
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
 
 ### Installation
 To install this framework
@@ -48,9 +60,16 @@ source ${HOME}/.siebjee_tooling
 source ${TOOLING_BASE_DIR}/zsh/environment.sh
 EOF
 
+ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zshrc
 ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
 ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
 ln -sf ${TOOLING_BASE_DIR}/brew/Bundle ~/.Bundle
+```
+
+### ZSH Plugins
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
 ### Vim

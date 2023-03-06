@@ -54,6 +54,9 @@ Generic naviation keys
 | `@#`                   | Replay recorded macro at character #                                            |
 | `lopen`                | Open the linting error menu                                                     |
 | `<LEADER>c`            | Copy selected lines with pbcopy                                                 |
+| `<CTRL>W |`            | Set current window height to N (default: very high)                             |
+| `<CTRL>W |`            | Set current window width  to N (default: very high)                             |
+| `<CTRL>W =`            | Make all windows the same height & width                                        |
 
 #### Spell Check
 
