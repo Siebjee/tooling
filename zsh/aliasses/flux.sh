@@ -2,6 +2,9 @@ alias fr="flux reconcile"
 alias frs="flux resume"
 alias fsp="flux suspend"
 
+alias fsphr="flux suspend helmrelease"
+alias fspk="flux suspend kustomizations"
+
 alias fgk="flux get kustomizations"
 
 alias fgap="flux get alert-providers"
@@ -27,6 +30,7 @@ alias fflux="KNS=flux-system flux"
 alias ffr="KNS=flux-system flux reconcile"
 alias ffrs="KNS=flux-system flux resume"
 alias ffsp="KNS=flux-system flux suspend"
+alias ffspk="KNS=flux-system flux suspend kustomizations"
 
 alias ffgk="KNS=flux-system flux get kustomizations"
 

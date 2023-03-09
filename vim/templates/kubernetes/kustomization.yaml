@@ -7,8 +7,8 @@ resources:
 transformers:
 - common-labels.yaml
 
-patchesStrategicMerge:
-- deployment.yaml
+patches:
+- path: deployment.yaml
 
 configMapGenerator:
 - name: env-vars
