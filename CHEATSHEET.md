@@ -85,6 +85,14 @@ Generic naviation keys
 | `<CTRL>j`              | Move to pane below from cursor                                                  |
 | `<CTRL>k`              | Move to pane above from cursor                                                  |
 | `<CTRL>l`              | Move to pane right from cursor                                                  |
+| `<CTRL>w`+`r`          | Swap the splits down (horizontal split)                                         |
+| `<CTRL>w`+`R`          | Swap the splits up   (horizontal split)                                         |
+| `<CTRL>w`+`H`          | Move active split to vertical split on the left                                 |
+| `<CTRL>w`+`L`          | Move active split to vertical split on the right                                |
+| `<CTRL>w`+`J`          | Move active split to the down into a horizontal split                           |
+| `<CTRL>w`+`K`          | Move active split to the top into a horizontal split                            |
+| `<CTRL>w`+`c`          | Close current split                                                             |
+| `<CTRL>w`+`o`          | Close all but active split                                                      |
 
 #### File navigation
 ##### Nerd Tree
