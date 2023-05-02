@@ -59,7 +59,6 @@ Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-
 call plug#end()
 
 " Kubernetes templating
@@ -100,3 +99,5 @@ let g:go_highlight_variable_declarations = 1
 let g:go_fmt_command = "goimports"
 
 set foldlevelstart=100
+
+set showcmd

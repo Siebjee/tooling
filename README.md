@@ -9,13 +9,10 @@ Install:
 * [OhMyZSH](https://ohmyz.sh)
 * [HomeBrew](https://github.com/Homebrew/brew/)
 
-Or install zsh manually
-* [zsh](https://github.com/ohmyzsh/ohmyzsh)
-
 Optionally install:
 * [the-ultimate-vimrc](https://github.com/amix/vimrc)
 
-#### zsh config
+#### OhMyZSH config
 * theme
   * [powerlevel10k/powerlevel10k](https://github.com/romkatv/powerlevel10k)
 * plugins:
@@ -74,12 +71,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 ```
 
 ### Vim
-Follow instructions of at https://github.com/amix/vimrc
+Follow instructions of at [Siebjee/vimrc](https://github.com/Siebjee/vimrc) (Forked from: [amix/vimrc](https://github.com/amix/vimrc))
 
 And execute the following commands
 
 ```
-git clone git@github.com:ycm-core/YouCompleteMe.git ~/.vim_runtime/my_plugins/
 git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/
 
 ln -sf ${TOOLING_BASE_DIR}/vim/vimrc ~/.vim_runtime/my_configs.vim
