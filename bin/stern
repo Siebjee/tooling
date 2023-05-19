@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-STERN_BIN="/usr/local/bin/stern"
+STERN_BIN="${HOMEBREW_PREFIX}/bin/stern"
 
 cwd=$(pwd)
 until test -f .kube_config || [ "$(pwd)" = "/" ]; do

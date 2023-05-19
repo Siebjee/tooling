@@ -2,11 +2,11 @@
 
 # This will ignore the aliasses under commands ls and l
 if command rg --version > /dev/null 2>&1; then
-    GLOBALIAS_FILTER_VALUES=(ls l)
+    GLOBALIAS_FILTER_VALUES=(ls l vim)
     alias grep="rg"
     alias _grep="/usr/bin/grep"
 else
-    GLOBALIAS_FILTER_VALUES=(ls l grep)
+    GLOBALIAS_FILTER_VALUES=(ls l grep vim)
 fi
 
 # This will expand aliasses

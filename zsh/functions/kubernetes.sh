@@ -5,7 +5,7 @@ function kinst {
 
   if [ ! -f "${binary}" ]; then
     echo "Downloading kubectl@${version}"
-    curl -L --silent "https://dl.k8s.io/release/v${version}/bin/darwin/amd64/kubectl" --output ${binary}
+    curl -L --silent "https://dl.k8s.io/release/v${version}/bin/darwin/$(uname -m)/kubectl" --output ${binary}
     chmod +x ${binary}
   else
     echo "kubectl@${version} already installed"

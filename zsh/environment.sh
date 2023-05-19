@@ -85,6 +85,12 @@ fi
 
 unset LS_COLORS
 
+
+if command chromium --version > /dev/null 2>&1; then
+  export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+  export PUPPETEER_EXECUTABLE_PATH=$(which chromium)
+fi
+
 ## make pastes fast again
 zstyle ':bracketed-paste-magic' active-widgets '.self-*'
 

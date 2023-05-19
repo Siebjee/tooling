@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-KUBESCAPE_BIN="/usr/local/bin/kubescape"
+KUBESCAPE_BIN="${HOMEBREW_PREFIX}/bin/kubescape"
 
 cwd=$(pwd)
 until test -f .kube_config || [ "$(pwd)" = "/" ]; do

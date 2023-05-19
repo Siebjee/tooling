@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ARGO_BIN="/usr/local/bin/argo"
+ARGO_BIN="${HOMEBREW_PREFIX}/bin/argo"
 
 cwd=$(pwd)
 until test -f .kube_config || [ "$(pwd)" = "/" ]; do
