@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-flux_BIN="${HOMEBREW_PREFIX}/bin/flux"
+FLUX_BIN="${HOMEBREW_PREFIX}/bin/flux"
 
 cwd=$(pwd)
 until test -f .kube_config || [ "$(pwd)" = "/" ]; do
@@ -25,4 +25,4 @@ if [ ! -z ${namespace} ]; then kctl_args="${kctl_args} --namespace=${namespace}"
 source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
 
 >&2 echo "[FLUX @ $(date "+%Y-%m-%d %H:%M:%S")] Using context: ${context}/${namespace}"
-${flux_BIN} ${kctl_args} $@
+${FLUX_BIN} ${kctl_args} $@
