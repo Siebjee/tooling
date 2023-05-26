@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+KUBECONFORM_BIN="${HOMEBREW_PREFIX}/bin/kubeconform"
+
+>&2 echo "[kubeconform @ $(date "+%Y-%m-%d %H:%M:%S")]"
+set -x
+${KUBECONFORM_BIN} \
+    -schema-location ${KUBECONFORM_DIR}/default \
+    -schema-location ''${KUBECONFORM_DIR}'/extras/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json' \
+    $@

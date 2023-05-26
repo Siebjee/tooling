@@ -7,6 +7,7 @@ source ${HOME}/.siebjee_tooling
 # Set default directory paths
 export TOOLING_BIN_DIR="${TOOLING_BASE_DIR}/bin"
 export TOOLING_ZSH_DIR="${TOOLING_BASE_DIR}/zsh"
+export KUBECONFORM_DIR="${TOOLING_BASE_DIR}/.kubeconform"
 
 export GPG_TTY=`tty`
 

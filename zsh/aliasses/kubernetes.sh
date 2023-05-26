@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-alias ktest='kubeconform --exit-on-error --ignore-missing-schemas -kubernetes-version ${KUBECTL_VERSION} -verbose -summary -schema-location default -schema-location '"'"'https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json'"'"' -'
+alias ktest='kubeconform --exit-on-error --ignore-missing-schemas -kubernetes-version ${KUBECTL_VERSION} -verbose -summary -'
 alias kg="kubectl get"
 alias kd="kubectl describe"
 alias kgn="kubectl config get-contexts | grep \"^\*\" | awk '{print \$NF}'"
