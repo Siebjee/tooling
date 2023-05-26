@@ -1,6 +1,7 @@
 *.swp
 *.swo
 .DS_STORE
+.kubeconform
 bin/.additional_wrapper_conditions
 
 zsh/environment/*.sh
