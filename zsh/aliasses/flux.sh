@@ -50,3 +50,5 @@ alias ffgsb="KNS=flux-system flux get source bucket"
 alias ffgschart="KNS=flux-system flux get source chart"
 alias ffgit="KNS=flux-system flux get source git"
 alias ffghelm="KNS=flux-system flux get source helm"
+
+alias frhr=flux_rhr

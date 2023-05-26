@@ -48,17 +48,21 @@ alias kgw="kubectl get --watch"
 # Kustomize
 alias kgk="kubectl get kustomizations"
 alias kgkw="kubectl get kustomizations -w"
-alias kgkf="kubectl get kustomizations --namespace flux-system"
-alias kgkfw="kubectl get kustomizations --namespace flux-system -w"
+alias kgkf="KNS=flux-system kubectl get kustomizations"
+alias kgkfw="KNS=flux-system kubectl get kustomizations -w"
+
+alias kdk="kubectl describe kustomizations"
+alias kdkw="kubectl describe kustomizations -w"
+alias kdkf="KNS=flux-system kubectl describe kustomization"
 
 # Flux
-alias kgit="kubectl get gitrepository --namespace=flux-system"
-alias kgimgp="kubectl get imagepolicies --namespace=flux-system"
-alias kgimgr="kubectl get imagerepository --namespace=flux-system"
+alias kgit="KNS=flux-system kubectl get gitrepository"
+alias kgimgp="KNS=flux-system kubectl get imagepolicies"
+alias kgimgr="KNS=flux-system kubectl get imagerepository"
 
-alias kdgit="kubectl describe gitrepository --namespace=flux-system"
-alias kdimgp="kubectl describe imagepolicies --namespace=flux-system"
-alias kdimgr="kubectl describe imagerepository --namespace=flux-system"
+alias kdgit="KNS=flux-system kubectl describe gitrepository"
+alias kdimgp="KNS=flux-system kubectl describe imagepolicies"
+alias kdimgr="KNS=flux-system kubectl describe imagerepository"
 
 alias kghr="kubectl get hr"
 alias kdhr="kubectl describe hr"

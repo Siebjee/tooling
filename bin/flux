@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-flux_BIN="/usr/local/bin/flux"
+flux_BIN="${HOMEBREW_PREFIX}/bin/flux"
 
 cwd=$(pwd)
 until test -f .kube_config || [ "$(pwd)" = "/" ]; do
