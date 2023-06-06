@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 function kinst {
-  local version=${1/v/}
+  local version=${1:-${KUBECTL_VERSION}}
+  local version=${version/v/}
   local binary="/usr/local/bin/kubectl@${version}"
 
   if [ ! -f "${binary}" ]; then
     echo "Downloading kubectl@${version}"
-    curl -L --silent "https://dl.k8s.io/release/v${version}/bin/darwin/$(uname -m)/kubectl" --output ${binary}
+    curl -L --silent "https://dl.k8s.io/release/v${version}/bin/$(uname -s | tr '[:upper:]' '[:lower:]')/$(uname -m)/kubectl" --output ${binary}
     chmod +x ${binary}
   else
     echo "kubectl@${version} already installed"
