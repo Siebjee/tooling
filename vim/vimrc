@@ -55,6 +55,7 @@ endif
 
 call plug#begin('~/.vim_runtime/my_plugins')
 Plug 'junegunn/vim-plug'
+Plug 'glench/vim-jinja2-syntax'
 
 Plug 'neoclide/coc.nvim', {'tag': 'v0.0.81'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -84,6 +85,9 @@ if has("autocmd")
     autocmd BufNewFile service.yaml 0r ${TOOLING_BASE_DIR}/vim/templates/kubernetes/service.yaml
   augroup END
 endif
+
+" Automatically removing all trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
 
 " GoLang
 let g:go_highlight_extra_types = 1

@@ -62,6 +62,7 @@ ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
 ln -sf ${TOOLING_BASE_DIR}/zsh/p10k.zsh ~/.p10k.zsh
 ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
 ln -sf ${TOOLING_BASE_DIR}/brew/Bundle ~/.Bundle
+
 ```
 
 ### ZSH Plugins
@@ -147,7 +148,7 @@ EOF
     └── zsh.sh
 ```
 
-The CLI wrappers have a additional feature, allowing you to make them a bit more flexible to your liking.  
+The CLI wrappers have a additional feature, allowing you to make them a bit more flexible to your liking.
 Add a file at `${TOOLING_ZSH_DIR}/bin/.additional_wrapper_conditions` and check below how I use it.
 
 ```
