@@ -78,6 +78,12 @@ if test -d ~/.nvm; then
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+# Add support gcloud SDK installed via brew
+if command gcloud version > /dev/null && command brew list google-cloud-sdk > /dev/null && [[ ${PATH} != *"$(brew --prefix)/share/google-cloud-sdk/bin"* ]]; then
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
+
 # only add $TOOLING_BIN_DIR to path if it's not there.
 if [[ ${PATH} != *"${TOOLING_BIN_DIR}"* ]]; then
   export PATH="${TOOLING_BIN_DIR}:${PATH}"
