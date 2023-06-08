@@ -9,6 +9,8 @@ export TOOLING_BIN_DIR="${TOOLING_BASE_DIR}/bin"
 export TOOLING_ZSH_DIR="${TOOLING_BASE_DIR}/zsh"
 export KUBECONFORM_DIR="${TOOLING_BASE_DIR}/.kubeconform"
 
+export YAMLLINT_CONFIG_FILE="${TOOLING_BASE_DIR}/.yamllint"
+
 export GPG_TTY=`tty`
 
 source ${TOOLING_ZSH_DIR}/zsh.sh
@@ -85,7 +87,6 @@ else
 fi
 
 unset LS_COLORS
-
 
 if command chromium --version > /dev/null 2>&1; then
   export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
