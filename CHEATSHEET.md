@@ -118,10 +118,12 @@ Generic naviation keys
 
 #### NERDTree
 
-| Command | Description                                   |
-|:--------|:----------------------------------------------|
+| Command     | Description                                   |
+|:------------|:----------------------------------------------|
 | `shift+i`   | In NerdTree show hidden files and directories |
 | `shift+r`   | In NerdTree refresh files and directories     |
+| `t`         | Opens file in new tab                         |
+| `i`         | Opens file in new split                       |
 
 #### Tips
 

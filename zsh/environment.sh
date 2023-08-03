@@ -69,6 +69,11 @@ if command helm --version > /dev/null 2>&1; then
   . <(helm completion zsh 2>/dev/null)
 fi
 
+# add colima autocomplete
+if command colima --version > /dev/null 2>&1; then
+  . <(colima completion zsh 2>/dev/null)
+fi
+
 if test -d ~/.nvm; then
   export NVM_DIR="$HOME/.nvm"
   if [[ ${PATH} != *".npm-global/bin"* ]]; then

@@ -7,6 +7,9 @@ function kinst {
     local arch=$(uname -m)
 
     case ${arch} in
+        "x86_64")
+            arch="amd64"
+            ;;
         "aarch64")
             arch="arm64"
             ;;
