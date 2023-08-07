@@ -87,7 +87,7 @@ alias klnginxf="KNS=ingress-nginx kubectl logs --tail=-1 --timestamps -f -l app.
 alias kruntest="kubectl run test --image=debian:bullseye-slim -ti -- /bin/bash"
 
 # Stern
-alias stern="stern --timestamps --timezone utc"
+alias stern="stern --timestamps"
 
 # Delete failed pods
 alias kdpf="kubectl delete pods --field-selector=status.phase=Failed"

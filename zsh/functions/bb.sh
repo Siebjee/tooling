@@ -1,6 +1,6 @@
 function _bb {
     BREW_FILES=$(find ${TOOLING_BASE_DIR}/brew -type f -depth 1 ! -iname "*.lock.json"| rev | cut -d '/' -f 1 | rev)
-    NAMED_OPTIONS="all help show"
+    NAMED_OPTIONS="all help show edit"
 
     cur=${COMP_WORDS[COMP_CWORD]}
     prev=${COMP_WORDS[COMP_CWORD-1]}
