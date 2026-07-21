@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+alias kdrain="kubectl drain --ignore-daemonsets --delete-emptydir-data"
+
 alias ktest='kubeconform -exit-on-error -ignore-missing-schemas -kubernetes-version ${KUBECTL_VERSION} -verbose -summary -'
 alias kg="kubectl get"
 alias kd="kubectl describe"
@@ -19,6 +21,7 @@ alias kl30m="kubectl logs --since 30m --timestamps"
 alias kl1h="kubectl logs --since 1h --timestamps"
 
 # Pods
+alias kgpc="kubectl get pods -o custom-columns='NAME:.metadata.name,READY:.status.conditions[?(@.type==\"Ready\")].status,STATUS:.status.phase,RESTARTS:.status.containerStatuses[*].restartCount,AGE:.metadata.creationTimestamp,IMAGE:.spec.containers[*].image'"
 alias kgpra="kubectl get pods --all-namespaces | awk '\$5>0'"
 alias kgpr="kubectl get pods | awk '\$5>0'"
 alias kgls="kubectl get pods -o=jsonpath='{range .items[*].status.containerStatuses[*]}{.name}{\"\t\"}{.lastState.reason}{.lastState.terminated.reason}{\" \"}{.lastState.terminated.finishedAt}{\"\n\"}'"

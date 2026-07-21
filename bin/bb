@@ -28,7 +28,7 @@ fi
 case $1 in
   "all")
     for bundle in ${bundles}; do
-        brew bundle --file ${TOOLING_BASE_DIR}/brew/${bundle}
+        brew bundle --file ${bundle}
     done
     ;;
   "show")

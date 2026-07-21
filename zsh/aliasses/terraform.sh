@@ -3,7 +3,7 @@ alias t="terraform"
 alias tv="terraform validate"
 alias ts="terraform state"
 alias ta="terraform apply"
-alias tp="terraform plan"
+alias tp="terraform plan -parallelism=20 -input=false"
 alias tpd="terraform plan -destroy"
 
 alias tfmt="terraform fmt"

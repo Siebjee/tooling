@@ -77,11 +77,11 @@ Follow instructions of at [Siebjee/vimrc](https://github.com/Siebjee/vimrc) (For
 And execute the following commands
 
 ```
-git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/
-
 ln -sf ${TOOLING_BASE_DIR}/vim/vimrc ~/.vim_runtime/my_configs.vim
 
 mkdir -p ~/.vim_runtime/my_plugins
+
+git clone git@github.com:hashivim/vim-terraform.git ~/.vim_runtime/my_plugins/vim-terraform
 curl -fLo ~/.vim_runtime/my_plugins/vim-plug/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 

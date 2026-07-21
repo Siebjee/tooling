@@ -12,3 +12,6 @@ mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
 mas "Data Jar", id: 1453273600
 mas "UTM", id: 1538878817
+
+mas "Velja", id: 1607635845
+mas "Kagi for Safari", id: 1622835804

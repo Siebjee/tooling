@@ -21,6 +21,7 @@ fi
 
 if [ ! -z ${context} ]; then kctl_args="--context=${context}"; fi
 if [ ! -z ${namespace} ]; then kctl_args="${kctl_args} --namespace=${namespace}"; fi
+if [ ! -z ${config} ]; then kctl_args="${kctl_args} --kubeconfig=${config}"; fi
 
 source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
 

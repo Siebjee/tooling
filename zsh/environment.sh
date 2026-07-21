@@ -13,6 +13,8 @@ export YAMLLINT_CONFIG_FILE="${TOOLING_BASE_DIR}/.yamllint"
 
 export GPG_TTY=`tty`
 
+export HOMEBREW_PREFIX=$(brew --prefix)
+
 source ${TOOLING_ZSH_DIR}/zsh.sh
 
 alias _env_reload="source ${TOOLING_BASE_DIR}/zsh/environment.sh"
@@ -53,6 +55,11 @@ if command flux --version > /dev/null 2>&1; then
   . <(flux completion zsh 2>/dev/null)
 fi
 
+# add az autocomplete
+if command az --version > /dev/null 2>&1 && command brew list az > /dev/null; then
+  source $(brew --prefix)/etc/bash_completion.d/az
+fi
+
 # add pyenv autocomplete
 if command pyenv --version > /dev/null 2>&1; then
   export PYTHON_CONFIGURE_OPTS="--enable-framework"
@@ -79,6 +86,7 @@ if test -d ~/.nvm; then
   if [[ ${PATH} != *".npm-global/bin"* ]]; then
     export PATH="~/.npm-global/bin:${PATH}"
   fi
+
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi

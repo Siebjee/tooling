@@ -17,8 +17,8 @@ function kinst {
 
     if [ ! -f "${binary}" ]; then
         echo "Downloading kubectl@${version}"
-        curl -L --silent "https://dl.k8s.io/release/v${version}/bin/$(uname -s | tr '[:upper:]' '[:lower:]')/${arch}/kubectl" --output ${binary}
-        chmod +x ${binary}
+        sudo curl -L --silent "https://dl.k8s.io/release/v${version}/bin/$(uname -s | tr '[:upper:]' '[:lower:]')/${arch}/kubectl" --output ${binary}
+        sudo chmod +x ${binary}
     else
         echo "kubectl@${version} already installed"
     fi
@@ -95,6 +95,14 @@ function kgt {
     local user=$1
     echo "Bearer $(kubectl get secret $(kubectl get sa ${user} -o=jsonpath='{.secrets[0].name}') -o=jsonpath='{.data.token}' | base64 --decode)"
 }
+
+function argo_token {
+    local token=$(KNS=argo-workflows kgt argo-ui)
+    export ARGO_TOKEN=${token}
+
+    echo $ARGO_TOKEN | pbcopy
+}
+
 
 complete -F _ksn_completions ksn
 complete -F _ksc_completions ksc
