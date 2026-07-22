@@ -2,25 +2,7 @@
 
 KUBESCAPE_BIN="${HOMEBREW_PREFIX}/bin/kubescape"
 
-cwd=$(pwd)
-until test -f .kube_config || [ "$(pwd)" = "/" ]; do
-  cd ..
-done
-if test -f .kube_config; then
-  source .kube_config
-fi
-cd ${cwd}
-
-if [ ! -z ${KCTX} ]; then
-  context=${KCTX}
-fi
-
-if [ ! -z ${context} ] && [ "$1" = "scan" ]; then
-  kctl_args="$1 --kube-context=${context}"
-  shift
-fi
-
-source ${TOOLING_BIN_DIR}/.additional_wrapper_conditions
+source ${TOOLING_ZSH_DIR}/functions/kube_config_wrapper.sh
 
 case $1 in
     "get")
