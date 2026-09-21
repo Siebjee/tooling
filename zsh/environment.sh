@@ -13,7 +13,9 @@ export YAMLLINT_CONFIG_FILE="${TOOLING_BASE_DIR}/.yamllint"
 
 export GPG_TTY=`tty`
 
-export HOMEBREW_PREFIX=$(brew --prefix)
+if command brew --version > /dev/null 2>&1; then
+  export HOMEBREW_PREFIX=$(brew --prefix)
+fi
 
 source ${TOOLING_ZSH_DIR}/zsh.sh
 
@@ -56,7 +58,7 @@ if command flux --version > /dev/null 2>&1; then
 fi
 
 # add az autocomplete
-if command az --version > /dev/null 2>&1 && command brew list az > /dev/null; then
+if command brew --version > /dev/null 2>&1 && command az --version > /dev/null 2>&1 && command brew list az > /dev/null; then
   source $(brew --prefix)/etc/bash_completion.d/az
 fi
 
@@ -92,7 +94,7 @@ if test -d ~/.nvm; then
 fi
 
 # Add support gcloud SDK installed via brew
-if command gcloud version > /dev/null && command brew list google-cloud-sdk > /dev/null && [[ ${PATH} != *"$(brew --prefix)/share/google-cloud-sdk/bin"* ]]; then
+if command brew --version > /dev/null 2>&1 && command gcloud version > /dev/null 2>&1 && command brew list google-cloud-sdk > /dev/null && [[ ${PATH} != *"$(brew --prefix)/share/google-cloud-sdk/bin"* ]]; then
     source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
     source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 fi

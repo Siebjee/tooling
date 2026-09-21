@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 if [ -z ${KUBECTL_VERSION} ]; then
-  KUBECTL_BIN="/usr/local/bin/kubectl"
+  KUBECTL_BIN="${HOME}/.local/bin/kubectl"
 else
-  KUBECTL_BIN="/usr/local/bin/kubectl@${KUBECTL_VERSION}"
+  KUBECTL_BIN="${HOME}/.local/bin/kubectl@${KUBECTL_VERSION}"
 fi
 
 source ${TOOLING_ZSH_DIR}/functions/kube_config_wrapper.sh

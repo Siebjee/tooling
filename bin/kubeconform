@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-KUBECONFORM_BIN="${HOMEBREW_PREFIX}/bin/kubeconform"
+KUBECONFORM_BIN="$(PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${HOMEBREW_PREFIX}/bin which kubeconform)"
 
 >&2 echo "[kubeconform @ $(date "+%Y-%m-%d %H:%M:%S")]"
 set -x

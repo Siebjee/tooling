@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-FLUX_BIN="${HOMEBREW_PREFIX}/bin/flux"
+FLUX_BIN="$(PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${HOMEBREW_PREFIX}/bin which flux)"
 
 source ${TOOLING_ZSH_DIR}/functions/kube_config_wrapper.sh
 

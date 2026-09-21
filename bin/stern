@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-STERN_BIN="${HOMEBREW_PREFIX}/bin/stern"
+STERN_BIN="$(PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:${HOMEBREW_PREFIX}/bin which stern)"
 
 source ${TOOLING_ZSH_DIR}/functions/kube_config_wrapper.sh
 

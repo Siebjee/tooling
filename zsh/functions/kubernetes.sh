@@ -2,7 +2,7 @@
 function kinst {
     local version=${1:-${KUBECTL_VERSION}}
     local version=${version/v/}
-    local binary="/usr/local/bin/kubectl@${version}"
+    local binary="${HOME}/.local/bin/kubectl@${version}"
 
     local arch=$(uname -m)
 

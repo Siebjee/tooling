@@ -17,8 +17,6 @@ RUN apt-get update && apt-get install -y \
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN chown :ubuntu /usr/local/bin && chmod g+rwx /usr/local/bin
-
 # hadolint ignore=DL3059
 RUN git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /opt/powerlevel10k
 
@@ -60,15 +58,15 @@ RUN mkdir -p /tmp/install
 WORKDIR /tmp/install
 
 ENV VERSION_STERN=1.25.0
-RUN curl --silent -L -o stern.tar.gz "https://github.com/stern/stern/releases/download/v${VERSION_STERN}/stern_${VERSION_STERN}_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/aarch64/arm64/').tar.gz" && tar zxvf stern.tar.gz && install -o ubuntu -g ubuntu -m 0755 stern /usr/local/bin/stern
+RUN curl --silent -L -o stern.tar.gz "https://github.com/stern/stern/releases/download/v${VERSION_STERN}/stern_${VERSION_STERN}_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/aarch64/arm64/').tar.gz" && tar zxvf stern.tar.gz && install -o ubuntu -g ubuntu -m 0755 stern ${HOME}/.local/bin/stern
 
 ENV VERSION_KUBECONFORM=0.6.1
-RUN curl --silent -L -o kubeconform.tar.gz "https://github.com/yannh/kubeconform/releases/download/v${VERSION_KUBECONFORM}/kubeconform-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/aarch64/arm64/').tar.gz" && tar zxvf kubeconform.tar.gz && install -o ubuntu -g ubuntu -m 0755 kubeconform /usr/local/bin/kubeconform
+RUN curl --silent -L -o kubeconform.tar.gz "https://github.com/yannh/kubeconform/releases/download/v${VERSION_KUBECONFORM}/kubeconform-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/aarch64/arm64/').tar.gz" && tar zxvf kubeconform.tar.gz && install -o ubuntu -g ubuntu -m 0755 kubeconform ${HOME}/.local/bin/kubeconform
 
 ENV VERSION_ARGO=3.4.7
-RUN curl --silent -L -o argo.gz "https://github.com/argoproj/argo-workflows/releases/download/v${VERSION_ARGO}/argo-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/aarch64/arm64/').gz" && gunzip -f argo.gz && install argo -o ubuntu -g ubuntu -m 0755 /usr/local/bin/argo
+RUN curl --silent -L -o argo.gz "https://github.com/argoproj/argo-workflows/releases/download/v${VERSION_ARGO}/argo-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m | sed 's/aarch64/arm64/').gz" && gunzip -f argo.gz && install argo -o ubuntu -g ubuntu -m 0755 ${HOME}/.local/bin/argo
 
-RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash && install -o ubuntu -g ubuntu -m 0755 kustomize /usr/local/bin/kustomize
+RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash && install -o ubuntu -g ubuntu -m 0755 kustomize ${HOME}/.local/bin/kustomize
 
 WORKDIR /home/ubuntu
 CMD ["zsh"]

@@ -1,50 +1,60 @@
 Tooling
 ===
+
 My personal tooling repository. To be documented still...
 
 In a nutshell it's a build-up ontop of existing oh-my-zsh stuff.
 
 ### Prerequisites
+
 Install:
-* [OhMyZSH](https://ohmyz.sh)
-* [HomeBrew](https://github.com/Homebrew/brew/)
+
+- [OhMyZSH](https://ohmyz.sh)
+- [HomeBrew](https://github.com/Homebrew/brew/)
 
 Optionally install:
-* [the-ultimate-vimrc](https://github.com/amix/vimrc)
+
+- [the-ultimate-vimrc](https://github.com/amix/vimrc)
 
 #### OhMyZSH config
-* theme
-  * [powerlevel10k/powerlevel10k](https://github.com/romkatv/powerlevel10k)
-* plugins:
-  * terraform
-  * docker
-  * docker-compose
-  * zsh-autosuggestions
-  * zsh-syntax-highlighting
-  * git
-  * tmux
-  * virtualenv
-  * kubectl
-  * aws
+
+- theme
+    - [powerlevel10k/powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- plugins:
+    - terraform
+    - docker
+    - docker-compose
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
+    - git
+    - tmux
+    - virtualenv
+    - kubectl
+    - aws
 
 ### Prerequisites Installation
+
 #### OmMyZSH
+
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
-#### HomeBrew
+
+#### HomeBrew (Optional)
+
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### Installation
+
 To install this framework
+
 ```
 git clone https://github.com/Siebjee/tooling.git
 
 cd tooling
 brew install mas # Required for mas installations via brew Bundle
-brew bundle --file brew/Brewfile
 brew bundle --file brew/minimal.Brewfile
 
 cat <<EOF > ${HOME}/.siebjee_tooling
@@ -61,17 +71,20 @@ ln -sf ${TOOLING_BASE_DIR}/zsh/zshrc ~/.zshrc
 ln -sf ${TOOLING_BASE_DIR}/zsh/zprofile ~/.zprofile
 ln -sf ${TOOLING_BASE_DIR}/zsh/p10k.zsh ~/.p10k.zsh
 ln -sf ${TOOLING_BASE_DIR}/tmux/tmux.conf ~/.tmux.conf
-ln -sf ${TOOLING_BASE_DIR}/brew/Bundle ~/.Bundle
 
 ```
 
 ### ZSH Plugins
+
 ```
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/romkatv/powerlevel10k.git "${HOME}/.oh-my-zsh/custom/themes/powerlevel10k"
+git clone https://github.com/zsh-users/zsh-autosuggestions "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+git clone https://github.com/zsh-users/zsh-completions "${HOME}/.oh-my-zsh/custom/plugins/zsh-completions"
 ```
 
 ### Vim
+
 Follow instructions of at [Siebjee/vimrc](https://github.com/Siebjee/vimrc) (Forked from: [amix/vimrc](https://github.com/amix/vimrc))
 
 And execute the following commands
@@ -94,7 +107,9 @@ ln -sf ${TOOLING_BASE_DIR}/vim/coc-settings.json ~/.vim/coc-settings.json
 ```
 
 #### Hacks
+
 Custom hack to make `terraform fmt` work
+
 ```
 cat <<EOF > ~/.vim_runtime/my_plugins/vim-terraform/ftplugin/terraform.vim
 if !exists('g:terraform_binary_path')
@@ -176,7 +191,9 @@ flux reconcile kustomization foobar --namespace baz
 ```
 
 #### Customizing tmux statup windows
+
 Create a file like shown below, and modify it as you'd like. The `tux` function will take care of the rest
+
 ```bash
 cat <<EOF > ${TOOLING_BASE_DIR}/tmux/myconfig/test.tmux
 #! /bin/bash
