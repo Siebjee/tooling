@@ -3,6 +3,7 @@ autoload -U compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
 source ${HOME}/.siebjee_tooling
+if test -f ${TOOLING_BASE_DIR}/VERSIONS; then source ${TOOLING_BASE_DIR}/VERSIONS; fi
 
 # Set default directory paths
 export TOOLING_BIN_DIR="${TOOLING_BASE_DIR}/bin"
@@ -20,6 +21,7 @@ fi
 source ${TOOLING_ZSH_DIR}/zsh.sh
 
 alias _env_reload="source ${TOOLING_BASE_DIR}/zsh/environment.sh"
+alias _env_update="(cd ${TOOLING_BASE_DIR} && git pull) && source ${TOOLING_BASE_DIR}/zsh/environment.sh"
 
 # Load additional aliasses
 for file in $(find ${TOOLING_ZSH_DIR}/aliasses -type f); do
@@ -64,7 +66,10 @@ fi
 
 # add pyenv autocomplete
 if command pyenv --version > /dev/null 2>&1; then
-  export PYTHON_CONFIGURE_OPTS="--enable-framework"
+  if [ "$(uname -o)" = "Darwin" ]; then
+    # Only needed on macOS
+    export PYTHON_CONFIGURE_OPTS="--enable-framework"
+  fi
   eval "$(pyenv init -)"
 fi
 
@@ -85,9 +90,7 @@ fi
 
 if test -d ~/.nvm; then
   export NVM_DIR="$HOME/.nvm"
-  if [[ ${PATH} != *".npm-global/bin"* ]]; then
-    export PATH="~/.npm-global/bin:${PATH}"
-  fi
+  export PATH=$(pathefier ~/.npm-global/bin)
 
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -99,7 +102,8 @@ if command brew --version > /dev/null 2>&1 && command gcloud version > /dev/null
     source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 fi
 
-# only add $TOOLING_BIN_DIR to path if it's not there.
+# No pathefier here, as it needs to be a bit more strict early in the path
+# Only add $TOOLING_BIN_DIR to path if it's not there.
 if [[ ${PATH} != *"${TOOLING_BIN_DIR}"* ]]; then
   export PATH="${TOOLING_BIN_DIR}:${PATH}"
 else

@@ -6,8 +6,6 @@ alias ta="terraform apply"
 alias tp="terraform plan -parallelism=20 -input=false"
 alias tpd="terraform plan -destroy"
 
-alias tfmt="terraform fmt"
-
 alias tsw="tfswitch"
 
 function tws {
@@ -23,4 +21,9 @@ function tws {
       return $?
       ;;
   esac
+}
+
+function tfmt {
+  terraform fmt $(find . -name "*.tf")
+  return $?
 }
